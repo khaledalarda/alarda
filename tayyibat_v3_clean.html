@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دليل نظام الطيبات — بالصور والسعرات</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Tahoma,Arial,sans-serif;background:#f4f3ef;color:#1a1a1a;direction:rtl}
+.wrap{max-width:800px;margin:0 auto;padding:1.25rem 1rem 4rem}
+h1{font-size:22px;font-weight:700;margin-bottom:4px}
+.sub{font-size:13px;color:#888;margin-bottom:1.5rem}
+.tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:1.5rem}
+.tab{padding:8px 15px;border-radius:8px;border:1.5px solid #ddd;background:#fff;color:#555;font-size:13px;cursor:pointer;font-family:inherit}
+.tab.on{border-color:#3b82f6;background:#eff6ff;color:#1d4ed8;font-weight:700}
+.sec-title{font-size:15px;font-weight:700;margin:0 0 12px}
+.food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-bottom:1.5rem}
+.fc{background:#fff;border-radius:12px;overflow:hidden;border:1.5px solid #e8e8e8;text-align:center}
+.fc.bad{border-color:#fca5a5}.fc.star-item{border-color:#fbbf24;border-width:2px}
+.fi{position:relative;height:88px;background:#f0ede8;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.fi img{width:100%;height:100%;object-fit:cover;display:block}
+.fi .em{font-size:36px}
+.bad-x{position:absolute;top:4px;right:4px;background:#dc2626;color:#fff;font-size:10px;font-weight:700;border-radius:4px;padding:2px 5px}
+.star-b{position:absolute;top:4px;right:4px;background:#f59e0b;color:#fff;font-size:9px;font-weight:700;border-radius:4px;padding:2px 5px}
+.fn{font-size:12px;padding:4px 4px 0;font-weight:700;color:#1a1a1a;line-height:1.3}
+.fc.bad .fn{color:#dc2626}.fc.star-item .fn{color:#92400e}
+.falt{font-size:10px;padding:2px 4px 5px;color:#aaa;line-height:1.2}
+.cat-lbl{font-size:13px;font-weight:700;color:#555;margin-bottom:8px;padding:4px 10px;background:#f9f8f5;border-radius:6px;display:inline-block}
+.day-nutr{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1.25rem}
+.dn{background:#fff;border-radius:10px;padding:12px;text-align:center}
+.dn-v{font-size:22px;font-weight:700}.dn-l{font-size:11px;color:#888;margin-top:2px}
+.dn.cal{border:1.5px solid #fbbf24;background:#fffbeb}.dn.cal .dn-v{color:#92400e}
+.dn.pro{border:1.5px solid #86efac;background:#f0fdf4}.dn.pro .dn-v{color:#15803d}
+.dn.fat{border:1.5px solid #93c5fd;background:#eff6ff}.dn.fat .dn-v{color:#1d4ed8}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px;margin-bottom:1.5rem}
+.rule{background:#fff;border:1px solid #e5e5e5;border-radius:10px;padding:12px 14px}
+.rt{font-size:13px;font-weight:700;margin-bottom:4px}
+.rd{font-size:12px;color:#666;line-height:1.5}
+.row-btns{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.wbtn,.dbtn{padding:6px 11px;border-radius:8px;border:1px solid #ddd;background:#fff;color:#555;font-size:13px;cursor:pointer;font-family:inherit}
+.wbtn.on{border-color:#22c55e;background:#f0fdf4;color:#15803d;font-weight:700}
+.dbtn.on{border-color:#3b82f6;background:#eff6ff;color:#1d4ed8;font-weight:700}
+.dbtn.fast{background:#fffbeb;border-color:#fcd34d;color:#92400e}
+.wnote{background:#f9f8f5;border-radius:8px;padding:10px 14px;font-size:13px;color:#555;line-height:1.7;margin-bottom:14px}
+.ginfo{background:#eff6ff;border:1px solid #93c5fd;border-radius:8px;padding:8px 14px;font-size:13px;color:#1d4ed8;margin-bottom:12px}
+.dhdr{background:#f9f8f5;border-radius:10px;padding:12px 16px;margin-bottom:14px}
+.dlbl{font-size:15px;font-weight:700;margin-bottom:8px}
+.badges{display:flex;gap:6px;flex-wrap:wrap}
+.bdg{font-size:12px;padding:3px 10px;border-radius:20px;border:1px solid #ddd;background:#fff}
+.bdg.p{background:#fff5f5;border-color:#fca5a5;color:#dc2626}
+.bdg.f{background:#fffbeb;border-color:#fcd34d;color:#92400e}
+.bdg.t{background:#f0fdf4;border-color:#86efac;color:#15803d}
+.hint{font-size:12px;color:#bbb;margin-bottom:10px}
+.meal{background:#fff;border:1px solid #e5e5e5;border-radius:12px;overflow:hidden;margin-bottom:10px}
+.meal.star{border-color:#86efac}.meal.bolt{border-color:#fcd34d}
+.mhdr{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid #e5e5e5;background:#f9f8f5}
+.mhdr.star{background:#f0fdf4}.mhdr.bolt{background:#fffbeb}
+.mname{font-size:13px;font-weight:700}.mtime{font-size:12px;color:#888}
+.mbody{padding:12px 14px}
+.mnutr{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.mc{font-size:11px;padding:3px 8px;border-radius:20px;font-weight:600;border:1px solid}
+.mc.cal{background:#fffbeb;color:#92400e;border-color:#fbbf24}
+.mc.pro{background:#f0fdf4;color:#15803d;border-color:#86efac}
+.mc.fat{background:#eff6ff;color:#1d4ed8;border-color:#93c5fd}
+.ings{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.ing{display:flex;align-items:center;gap:4px;font-size:12px;background:#f9f8f5;border-radius:6px;padding:3px 8px;border:1px solid #ebebeb}
+.ii{width:22px;height:22px;border-radius:4px;object-fit:cover;flex-shrink:0}
+.ie{font-size:15px;width:22px;text-align:center;flex-shrink:0}
+.in{font-weight:600;color:#1a1a1a}.ig{color:#888;font-size:10px}
+.altbtn{font-size:12px;padding:4px 12px;border-radius:8px;border:1px solid #ddd;background:transparent;color:#666;cursor:pointer;font-family:inherit}
+.cwarn{background:#fffbeb;border:1px solid #fcd34d;border-radius:12px;padding:14px 16px;margin-bottom:1.25rem}
+.cwt{font-size:13px;font-weight:700;color:#92400e;margin-bottom:6px}.cwd{font-size:13px;color:#92400e;line-height:1.8}
+.ccard{background:#fff;border:1px solid #e5e5e5;border-radius:12px;overflow:hidden;margin-bottom:12px}
+.cchdr{padding:10px 16px;border-bottom:1px solid #e5e5e5;font-size:15px;font-weight:700}
+.ccbody{padding:12px 16px}.tip{display:flex;gap:10px;margin-bottom:8px;font-size:13px;color:#555;line-height:1.7;align-items:flex-start}
+.gbox{background:#f0fdf4;border:1px solid #86efac;border-radius:12px;padding:14px 16px;margin-top:1.25rem}
+.gtitle{font-size:14px;font-weight:700;color:#15803d;margin-bottom:10px}
+.ggrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+.goal{background:#fff;border:1px solid #86efac;border-radius:8px;padding:8px 12px;text-align:center;font-size:13px}
+.disc{font-size:11px;color:#bbb;margin-top:1.25rem;text-align:center;line-height:1.6}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>🌿 دليل نظام الطيبات الشامل</h1>
+<p class="sub">مخصص لك — ٨٦ كجم · ١٧٤ سم · نشاط منخفض — السعرات والبروتين محسوبة لكل وجبة</p>
+<div class="tabs">
+  <button class="tab on" onclick="goTab(0)">📸 الأكل بالصور</button>
+  <button class="tab" onclick="goTab(1)">🏠 حياة عادية + سعرات</button>
+  <button class="tab" onclick="goTab(2)">🏋️ جيم + سعرات</button>
+  <button class="tab" onclick="goTab(3)">🧠 مدرب الحياة</button>
+</div>
+<div id="t0">
+  <p class="sec-title">القواعد الست الذهبية</p>
+  <div class="rules">
+    <div class="rule"><div class="rt">⏰ كُل عند الجوع الحقيقي</div><div class="rd">مش لأنك ملول — جوع حقيقي بس</div></div>
+    <div class="rule"><div class="rt">✋ قف عند ٨٠٪ شبع</div><div class="rd">قبل الشبع الكامل — الجهاز الهضمي يشتغل بكفاءة</div></div>
+    <div class="rule"><div class="rt">🍽️ ٢-٣ عناصر في الوجبة</div><div class="rd">ما تخلط كثير — خفف الحمل على جهازك</div></div>
+    <div class="rule"><div class="rt">💧 اشرب عند العطش</div><div class="rd">جسمك يعرف — ما تحتاج قاعدة ٨ أكواب</div></div>
+    <div class="rule"><div class="rt">🌙 الصيام أساسي</div><div class="rd">الإثنين والخميس + أيام البيض ١٣،١٤،١٥</div></div>
+    <div class="rule"><div class="rt">🔄 البروتين: يوم آه ويوم لا</div><div class="rd">يوم لحم/سمك، يوم راحة</div></div>
+  </div>
+  <p class="sec-title">✅ المسموحات بالصور — الاسم بالعربي والإنجليزي</p>
+  <div id="ag"></div>
+  <p class="sec-title" style="margin-top:1.5rem">❌ الممنوعات بالصور</p>
+  <div id="fg"></div>
+</div>
+<div id="t1" class="hidden"><div class="row-btns" id="wb1"></div><div class="wnote" id="wn1"></div><div class="row-btns" id="db1"></div><div id="dc1"></div></div>
+<div id="t2" class="hidden"><div class="row-btns" id="wb2"></div><div class="wnote" id="wn2"></div><div class="ginfo">⭐ وجبة بعد التدريب هي الأهم — لحم + أرز في أول ٤٥ دقيقة بعد التمرين</div><div class="row-btns" id="db2"></div><div id="dc2"></div></div>
+<div id="t3" class="hidden">
+  <div class="cwarn"><div class="cwt">كلام صريح معك</div><div class="cwd">٨٦ كجم + حياة ساكنة + نوم مكسّر — الأكل ٣٠٪ فقط من المعادلة. الباقي: نوم + شمس + حركة.</div></div>
+  <div id="co"></div>
+  <div class="gbox"><div class="gtitle">🏆 أهدافك بعد ٣٠ يوم</div><div class="ggrid"><div class="goal">✅ نزول ٣-٥ كجم</div><div class="goal">✅ نوم أفضل</div><div class="goal">✅ مزاج أهدأ</div><div class="goal">✅ طاقة صباحية</div><div class="goal">✅ بشرة أوضح</div><div class="goal">✅ توازن هرموني أفضل</div></div></div>
+  <p class="disc">للأغراض التعليمية فقط — استشر طبيبك قبل أي تغييرات كبيرة.</p>
+</div>
+</div>
+<script>
+const U='https://images.unsplash.com/photo-',Q='?w=220&h=220&fit=crop&crop=center&q=80',SQ='?w=60&h=60&fit=crop&crop=center&q=80';
+
+// Nutrition per 100g: {c:calories, p:protein_g, f:fat_g}
+const NUTR={
+  'ارز':        {c:130,p:2.7,f:0.3},
+  'بطاطس مسلوقة':{c:87,p:1.9,f:0.1},
+  'بطاطس مقلية':{c:312,p:3.4,f:15},
+  'بطاطس مهروسة':{c:110,p:2.1,f:3.5},
+  'بطاطس مشوية':{c:95,p:2.0,f:0.5},
+  'تمر':        {c:277,p:1.8,f:0.2},
+  'زبدة':       {c:717,p:0.9,f:81},
+  'سمن':        {c:900,p:0,f:100},
+  'عسل':        {c:304,p:0.3,f:0},
+  'عسل اسود':   {c:290,p:0,f:0},
+  'لحم خروف':   {c:217,p:26,f:12},
+  'لحم بقري':   {c:215,p:26,f:12},
+  'لحم جمل':    {c:160,p:22,f:8},
+  'لحم مفروم':  {c:215,p:26,f:12},
+  'كبدة':       {c:135,p:20,f:5},
+  'ارنب':       {c:173,p:29,f:5},
+  'سردين':      {c:208,p:25,f:11},
+  'سمك بحر':   {c:130,p:22,f:4},
+  'حمام':       {c:192,p:25,f:10},
+  'سمان':       {c:227,p:25,f:14},
+  'جبن جودة':   {c:356,p:25,f:27},
+  'جبن شيدر':   {c:403,p:25,f:33},
+  'جبن امنتال': {c:380,p:28,f:30},
+  'جبن كاشكوال':{c:370,p:26,f:29},
+  'جبن فلمنك':  {c:357,p:24,f:28},
+  'توست':       {c:247,p:13,f:4},
+  'نوتيلا':     {c:541,p:6,f:31},
+  'شوكولاتة':   {c:598,p:7,f:43},
+  'حلاوة':      {c:516,p:12,f:29},
+  'مربى':       {c:250,p:0.4,f:0.1},
+  'بسبوسة':     {c:380,p:5,f:12},
+  'لوز':        {c:579,p:21,f:50},
+  'كاجو':       {c:553,p:18,f:44},
+  'عين جمل':    {c:654,p:15,f:65},
+  'فستق':       {c:562,p:20,f:45},
+  'صنوبر':      {c:673,p:14,f:68},
+  'فول سوداني': {c:567,p:26,f:49},
+  'عنب':        {c:67,p:0.6,f:0.4},
+  'رمان':       {c:83,p:1.7,f:1.2},
+  'موز':        {c:89,p:1.1,f:0.3},
+  'فراولة':     {c:32,p:0.7,f:0.3},
+  'تفاح':       {c:52,p:0.3,f:0.2},
+  'كريز':       {c:50,p:1.0,f:0.3},
+  'توت':        {c:57,p:0.7,f:0.3},
+  'مشمش':       {c:48,p:1.4,f:0.4},
+  'خوخ':        {c:39,p:0.9,f:0.3},
+  'كمثرى':      {c:57,p:0.4,f:0.1},
+  'تين':        {c:74,p:0.8,f:0.3},
+  'ذرة':        {c:86,p:3.2,f:1.2},
+  'زيت زيتون':  {c:884,p:0,f:100},
+  'زيتون':      {c:145,p:1,f:15},
+  'شيبسي':      {c:536,p:7,f:35},
+  'فولية':      {c:450,p:10,f:20},
+  'سمسمية':     {c:480,p:12,f:22},
+};
+
+const IMGS={
+  'أرز':              {e:'🍚',p:'1536304929831-ee1ca9d44906',a:'Rice · رز · Riz'},
+  'بطاطس':            {e:'🥔',p:'1518977676601-b53f82aba655',a:'Potatoes · بطاطا · Patates'},
+  'تمر':              {e:'🌴',p:'1598965535830-a4e9d68ae8c7',a:'Dates · رطب · خرما'},
+  'زبدة':             {e:'🧈',p:'1589985270826-4b7bb135bc9d',a:'Butter · لورباك · زبدة بلدي'},
+  'سكر':              {e:'🍬',p:'1574182658906-6b95e0e1aa29',a:'Sugar · سكر أبيض'},
+  'عسل':              {e:'🍯',p:'1558642452-9d2a7deb7f62',a:'Honey · عسل نحل طبيعي'},
+  'سمن':              {e:'🧈',p:'1589985270826-4b7bb135bc9d',a:'Ghee · سمن عربي · Clarified Butter'},
+  'عسل أسود':         {e:'🍯',p:'1558642452-9d2a7deb7f62',a:'Molasses · Blackstrap · دبس'},
+  'لحم خروف':         {e:'🥩',p:'1544025162-d76538747c2b',a:'Lamb · Mutton · ضاني · خروف'},
+  'لحم بقري':         {e:'🥩',p:'1546964124-0cce460f38ef',a:'Beef · بقر · بتلو · كندوز'},
+  'لحم جمل':          {e:'🥩',p:'1544025162-d76538747c2b',a:'Camel Meat · إبل · ناقة'},
+  'لحم مفروم':        {e:'🥩',p:'1546964124-0cce460f38ef',a:'Ground Beef · لحمة مفرومة'},
+  'كبدة':             {e:'🫀',p:'1544025162-d76538747c2b',a:'Liver · كبد · Kabd'},
+  'أرنب':             {e:'🐇',p:'1548199973-ec2cb9df46f7',a:'Rabbit · Bunny · أرانب'},
+  'كوارع':            {e:'🦴',p:'1544025162-d76538747c2b',a:'Trotters · قوائم · كراعين'},
+  'حمام':             {e:'🕊️',p:'1544025162-d76538747c2b',a:'Pigeon · Squab · يمام'},
+  'سمان':             {e:'🐦',p:'1544025162-d76538747c2b',a:'Quail · سلوى · طير صغير'},
+  'سردين':            {e:'🐟',p:'1510130387422-82bed34b37e9',a:'Sardines · سمك سردين'},
+  'سمك بحر':          {e:'🐠',p:'1519708227418-a2d0867b35dc',a:'Sea Fish · سمك بحري'},
+  'جبن جودة':         {e:'🧀',p:'1486297678162-eb2a19b0a32d',a:'Gouda Cheese · جودة هولندية'},
+  'جبن شيدر':         {e:'🧀',p:'1452195100486-9927560c6930',a:'Cheddar Cheese · شيدر'},
+  'جبن إمنتال':       {e:'🧀',p:'1486297678162-eb2a19b0a32d',a:'Emmental · Swiss Cheese · جبن سويسري'},
+  'جبن كاشكوال':      {e:'🧀',p:'1452195100486-9927560c6930',a:'Kashkaval · كاشكفال · ريكفورد'},
+  'جبن فلمنك':        {e:'🧀',p:'1486297678162-eb2a19b0a32d',a:'Edam Cheese · EDAM · فلمنكية'},
+  'مثلثات':           {e:'🔺',p:'1486297678162-eb2a19b0a32d',a:'Processed Cheese Triangles'},
+  'توست':             {e:'🍞',p:'1558618666-fcd25c85cd64',a:'Whole Grain Toast · توست النخالة · خبز أسمر'},
+  'عنب':              {e:'🍇',p:'1537640538966-79f369143f8f',a:'Grapes · Raisins · عنب أسود'},
+  'رمان':             {e:'🍎',p:'1615485291234-9d694218aeb3',a:'Pomegranate · حب الرمان'},
+  'موز':              {e:'🍌',p:'1603833665858-e61d17a86224',a:'Banana · موزة'},
+  'فراولة':           {e:'🍓',p:'1464965911861-746a04b4bca6',a:'Strawberry · Strawberries · فريز'},
+  'تفاح':             {e:'🍎',p:'1567306226416-28f0efdc88ce',a:'Apple · تفاحة'},
+  'كريز':             {e:'🍒',p:'1528821335709-3c5b3c58f1fb',a:'Cherries · كرز · Cherry'},
+  'توت':              {e:'🫐',p:'1490474418585-ba9bad8fd0ea',a:'Berries · Mulberry · توت شامي · Blueberries'},
+  'مشمش':             {e:'🍑',p:'1557800636-894a64c1696f',a:'Apricot · Apricots · بخارة'},
+  'خوخ':              {e:'🍑',p:'1568702846914-96b305d2aaeb',a:'Peach · دراق · Nectarine'},
+  'كمثرى':            {e:'🍐',p:'1508739773434-c26b3d09e071',a:'Pear · إجاص · إنجاص · Poire'},
+  'تين':              {e:'🌿',p:'1629046272588-0dfaa5f73586',a:'Fig · تين أسود · Figue'},
+  'شوكولاتة داكنة':   {e:'🍫',p:'1606312619070-d48b795e84e5',a:'Dark Chocolate 70%+ · شوكولا داكن'},
+  'نوتيلا':           {e:'🫙',p:'1558642452-9d2a7deb7f62',a:'Nutella · كريمة الشوكولاتة والبندق'},
+  'حلاوة طحينية':     {e:'🍮',p:'1565299585323-38d6b0865b47',a:'Halva · Halawa · حلاوة · Tahini Candy'},
+  'بسبوسة':           {e:'🍰',p:'1578985545062-69928b1d9587',a:'Basbousa · سميت · هريسة · Semolina Cake'},
+  'مربى':             {e:'🫙',p:'1597714026523-cfb7f047ec25',a:'Jam · Marmalade · مرملاد · Confiture'},
+  'فولية':            {e:'🍬',p:'1558642452-9d2a7deb7f62',a:'Peanut Brittle · فولية · حلاوة الفول'},
+  'سمسمية':           {e:'🍬',p:'1558642452-9d2a7deb7f62',a:'Sesame Candy · سمسمية · حلاوة السمسم'},
+  'لوز':              {e:'🌰',p:'1574323347407-f5e1ad6d020b',a:'Almonds · لوز حلو'},
+  'كاجو':             {e:'🥜',p:'1599599810769-bcde5a160d32',a:'Cashews · Cashew Nuts · كاجو'},
+  'عين جمل':          {e:'🪨',p:'1563412580-f66a0f28f763',a:'Walnuts · جوز · عين الجمل · Noix'},
+  'فستق':             {e:'🌿',p:'1548159776-f6a1e8a8e22e',a:'Pistachios · فستق حلبي · Pistache'},
+  'صنوبر':            {e:'🌲',p:'1620832072834-0e7a6c374c24',a:'Pine Nuts · حب الصنوبر · Pignons'},
+  'فول سوداني':       {e:'🥜',p:'1574323347407-f5e1ad6d020b',a:'Peanuts · فول سوداني · Groundnuts'},
+  'شاي أخضر':         {e:'🍵',p:'1544787219-7f47ccb76574',a:'Green Tea · شاي أخضر'},
+  'قهوة':             {e:'☕',p:'1495474472287-4d71bcdd2085',a:'Coffee · Turkish Coffee · قهوة تركي'},
+  'زعتر':             {e:'🌿',p:'1539252554453-80ab65ad5571',a:'Thyme · Zaatar · زعتر'},
+  'ذرة':              {e:'🌽',p:'1551754655-2b37bfed6dac',a:'Corn · Maize · ذرة شامية'},
+  'زيت زيتون':        {e:'🫒',p:'1474979078687-f15af1a5c08a',a:'Olive Oil · زيت الزيتون البكر · Huile d Olive'},
+  'زيتون':            {e:'🫒',p:'1574484284077-8f62a47c2bc8',a:'Olives · زيتون كالاماتا'},
+  'شيبسي':            {e:'🥔',p:'1553979459-d1a5c027c44c',a:'Chips · Crisps · بطاطس مقرمشة'},
+  'دجاج':             {e:'🍗',p:'1604503468506-a8da13d11560',a:'Chicken · Poultry · فروج · فرخة'},
+  'بيض':              {e:'🥚',p:'1518569656558-1f25e69d2491',a:'Eggs · بيض دجاج · Oeufs'},
+  'خبز أبيض':         {e:'🍞',p:'1509440159596-0249088772ff',a:'White Bread · عيش · فينو · شمس · فرانزيلة'},
+  'مكرونة':           {e:'🍝',p:'1551183053-bf91798d9b7c',a:'Pasta · Noodles · شعيرية · فرموز · مكرونة'},
+  'حليب':             {e:'🥛',p:'1563636619-e9143da7973b',a:'Milk · Dairy · لبن · Lait'},
+  'جبنة بيضاء':       {e:'🧀',p:'1631379578550-4b80f4e019f2',a:'White Cheese · قريش · ريكوتا · كريمي'},
+  'زبادي':            {e:'🥣',p:'1488477181895-a70e969d85a8',a:'Yogurt · لبن · Yaourt · يوغرت'},
+  'طماطم':            {e:'🍅',p:'1546094096-0df4bcaaa337',a:'Tomatoes · بندورة · طماطم حمراء'},
+  'خيار':             {e:'🥒',p:'1568718119316-b6b6d58b04e8',a:'Cucumber · خيار · Concombre'},
+  'سبانخ':            {e:'🥬',p:'1576045057-5a04cee0ef70',a:'Spinach · سبانخ · Épinards'},
+  'ملوخية':           {e:'🥬',p:'1576045057-5a04cee0ef70',a:'Molokhia · Jews Mallow · ملوخية'},
+  'عدس':              {e:'🫘',p:'1515543904379-3d757afe72e4',a:'Lentils · عدس · Lentilles'},
+  'فول':              {e:'🫘',p:'1566385101743-605db2b7c32a',a:'Fava Beans · فول مدمس · Broad Beans'},
+  'حمص':              {e:'🫘',p:'1512621776951-a57141f2eefd',a:'Chickpeas · حمص · Pois Chiches'},
+  'كولا':             {e:'🥤',p:'1554866585-cd94860890b7',a:'Cola · Soda · Pepsi · Coke · غازيات'},
+  'بطيخ':             {e:'🍉',p:'1587049352851-8d4e89133924',a:'Watermelon · جيخة · حبحب'},
+  'شاي أحمر':         {e:'☕',p:'1576092768241-dec231879fc3',a:'Black Tea · Red Tea · شاي أسود'},
+};
+
+const allowedCats=[
+  {l:'🌟 الأساسيات الخمسة — يومياً بلا قيود',items:['أرز','بطاطس','تمر','زبدة','سكر','عسل'],star:true},
+  {l:'🥩 لحوم وبروتين — يوم آه ويوم لا',items:['لحم خروف','لحم بقري','لحم جمل','لحم مفروم','كبدة','أرنب','كوارع','حمام','سمان','سردين','سمك بحر']},
+  {l:'🧀 أجبان معتقة فقط',items:['جبن جودة','جبن شيدر','جبن إمنتال','جبن كاشكوال','جبن فلمنك','مثلثات']},
+  {l:'🍎 فواكه',items:['عنب','رمان','موز','فراولة','تفاح','كريز','توت','مشمش','خوخ','كمثرى','تين']},
+  {l:'🌰 مكسرات وزيوت',items:['لوز','كاجو','عين جمل','فستق','صنوبر','فول سوداني','زيت زيتون','زيتون']},
+  {l:'🍫 حلويات ومحليات',items:['شوكولاتة داكنة','نوتيلا','حلاوة طحينية','بسبوسة','مربى','سمسمية','فولية','عسل أسود']},
+  {l:'☕ مشروبات',items:['شاي أخضر','قهوة','زعتر','سمن']},
+  {l:'🍞 نشويات مسموحة',items:['توست','ذرة','شيبسي']},
+];
+const forbiddenCats=[
+  {l:'🚫 الدقيق الأبيض — الأهم',items:['خبز أبيض','مكرونة']},
+  {l:'🐔 دواجن وبيض',items:['دجاج','بيض']},
+  {l:'🥛 حليب ومشتقاته',items:['حليب','جبنة بيضاء','زبادي']},
+  {l:'🥬 خضروات ورقية/نيئة',items:['طماطم','خيار','سبانخ','ملوخية']},
+  {l:'🫘 بقوليات',items:['عدس','فول','حمص']},
+  {l:'🍉 فواكه ممنوعة + مشروبات',items:['بطيخ','كولا','شاي أحمر']},
+];
+
+// Meal data: items = [{n:display_name, g:grams, nk:nutrition_key, u:unit_desc}]
+const normalDays=[
+  {label:'اليوم الأول',protein:true,wake:'٨:٠٠ ص',meals:[
+    {time:'٩:٣٠ ص',name:'فطور',
+     items:[{n:'توست',g:60,nk:'توست',u:'٢ شريحة'},{n:'زبدة',g:15,nk:'زبدة',u:'١ م.ك'},{n:'عسل',g:20,nk:'عسل',u:'١ م.ك'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}],
+     alt: [{n:'توست',g:60,nk:'توست',u:'٢ شريحة'},{n:'نوتيلا',g:30,nk:'نوتيلا',u:'٢ م.ك'},{n:'موز',g:120,nk:'موز',u:'١ حبة'}]},
+    {time:'١:٣٠ م',name:'غداء',
+     items:[{n:'أرز',g:300,nk:'ارز',u:'١.٥ كوب'},{n:'لحم خروف',g:150,nk:'لحم خروف',u:'١٥٠ جم'},{n:'بطاطس',g:200,nk:'بطاطس مسلوقة',u:'٢ حبة'}],
+     alt: [{n:'أرز',g:300,nk:'ارز',u:'١.٥ كوب'},{n:'كبدة',g:120,nk:'كبدة',u:'١٢٠ جم'},{n:'سمن',g:10,nk:'سمن',u:'ملعقة'}]},
+    {time:'٥:٠٠ م',name:'خفيفة',
+     items:[{n:'كاجو',g:30,nk:'كاجو',u:'حفنة'},{n:'عين جمل',g:30,nk:'عين جمل',u:'حفنة'},{n:'رمان',g:150,nk:'رمان',u:'١ حبة'}],
+     alt: [{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'},{n:'لوز',g:30,nk:'لوز',u:'حفنة'}]},
+    {time:'٧:٣٠ م',name:'حلو / عشاء',
+     items:[{n:'جبن جودة',g:40,nk:'جبن جودة',u:'٢ شريحة'},{n:'توست',g:30,nk:'توست',u:'١ شريحة'},{n:'عسل أسود',g:20,nk:'عسل اسود',u:'١ م.ك'}],
+     alt: [{n:'حلاوة طحينية',g:40,nk:'حلاوة',u:'شريحة'},{n:'توست',g:30,nk:'توست',u:'١ شريحة'}]},
+  ]},
+  {label:'اليوم الثاني',protein:false,wake:'٨:٠٠ ص',meals:[
+    {time:'٩:٣٠ ص',name:'فطور',
+     items:[{n:'بطاطس',g:200,nk:'بطاطس مسلوقة',u:'٢ حبة'},{n:'زبدة',g:15,nk:'زبدة',u:'١ م.ك'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}],
+     alt: [{n:'أرز',g:200,nk:'ارز',u:'كوب'},{n:'زبدة',g:20,nk:'زبدة',u:'م.ك كبيرة'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}]},
+    {time:'٢:٠٠ م',name:'غداء (بدون لحم)',
+     items:[{n:'أرز',g:300,nk:'ارز',u:'١.٥ كوب'},{n:'بطاطس',g:150,nk:'بطاطس مقلية',u:'حصة'},{n:'جبن إمنتال',g:40,nk:'جبن امنتال',u:'٢ شريحة'}],
+     alt: [{n:'بطاطس',g:300,nk:'بطاطس مهروسة',u:'كوب'},{n:'توست',g:60,nk:'توست',u:'٢ شريحة'},{n:'جبن شيدر',g:40,nk:'جبن شيدر',u:'٢ شريحة'}]},
+    {time:'٥:٣٠ م',name:'خفيفة',
+     items:[{n:'عنب',g:150,nk:'عنب',u:'حفنة'},{n:'فستق',g:30,nk:'فستق',u:'حفنة'}],
+     alt: [{n:'تفاح',g:180,nk:'تفاح',u:'١ حبة'},{n:'لوز',g:30,nk:'لوز',u:'حفنة'}]},
+    {time:'٨:٠٠ م',name:'حلو',
+     items:[{n:'شوكولاتة داكنة',g:30,nk:'شوكولاتة',u:'٣ مربعات'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'},{n:'عسل',g:15,nk:'عسل',u:'م.ص'}],
+     alt: [{n:'بسبوسة',g:80,nk:'بسبوسة',u:'قطعة'}]},
+  ]},
+  {label:'اليوم الثالث',protein:true,wake:'٨:٠٠ ص',meals:[
+    {time:'٩:٠٠ ص',name:'فطور',
+     items:[{n:'توست',g:60,nk:'توست',u:'٢ شريحة'},{n:'زبدة',g:15,nk:'زبدة',u:'١ م.ك'},{n:'مربى',g:20,nk:'مربى',u:'م.ك'},{n:'رمان',g:150,nk:'رمان',u:'١ حبة'}],
+     alt: [{n:'توست',g:60,nk:'توست',u:'٢ شريحة'},{n:'عسل',g:20,nk:'عسل',u:'م.ك'},{n:'موز',g:120,nk:'موز',u:'١ حبة'}]},
+    {time:'١:٣٠ م',name:'غداء',
+     items:[{n:'سردين',g:150,nk:'سردين',u:'١٥٠ جم'},{n:'أرز',g:300,nk:'ارز',u:'١.٥ كوب'},{n:'بطاطس',g:150,nk:'بطاطس مسلوقة',u:'حبة ونص'},{n:'زيت زيتون',g:10,nk:'زيت زيتون',u:'م.ص'}],
+     alt: [{n:'حمام',g:200,nk:'حمام',u:'١ حمامة'},{n:'أرز',g:300,nk:'ارز',u:'١.٥ كوب'},{n:'ذرة',g:150,nk:'ذرة',u:'كوز'}]},
+    {time:'٥:٠٠ م',name:'خفيفة',
+     items:[{n:'فراولة',g:150,nk:'فراولة',u:'كوب'},{n:'كريز',g:100,nk:'كريز',u:'حفنة'},{n:'صنوبر',g:20,nk:'صنوبر',u:'م.ك'}],
+     alt: [{n:'توت',g:100,nk:'توت',u:'حفنة'},{n:'عين جمل',g:30,nk:'عين جمل',u:'حفنة'}]},
+    {time:'٨:٠٠ م',name:'عشاء',
+     items:[{n:'جبن كاشكوال',g:40,nk:'جبن كاشكوال',u:'٢ شريحة'},{n:'توست',g:30,nk:'توست',u:'١ شريحة'},{n:'زيتون',g:30,nk:'زيتون',u:'٦ حبات'}],
+     alt: [{n:'جبن فلمنك',g:40,nk:'جبن فلمنك',u:'٢ شريحة'},{n:'عسل أسود',g:20,nk:'عسل اسود',u:'م.ك'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}]},
+  ]},
+  {label:'اليوم الرابع — صيام مستحب',protein:false,fast:true,wake:'٨:٠٠ ص',meals:[
+    {time:'٩:٠٠ ص',name:'إفطار الصيام',
+     items:[{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}],
+     alt: [{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'},{n:'قهوة',g:0,nk:'ارز',u:'فنجان'}]},
+    {time:'١:٣٠ م',name:'وجبة رئيسية',
+     items:[{n:'أرز',g:350,nk:'ارز',u:'١.٧ كوب'},{n:'صنوبر',g:20,nk:'صنوبر',u:'م.ك'},{n:'بطاطس',g:200,nk:'بطاطس مسلوقة',u:'٢ حبة'},{n:'سمن',g:15,nk:'سمن',u:'م.ك'}],
+     alt: [{n:'أرز',g:350,nk:'ارز',u:'١.٧ كوب'},{n:'بطاطس',g:200,nk:'بطاطس مهروسة',u:'كوب'},{n:'زبدة',g:15,nk:'زبدة',u:'م.ك'}]},
+    {time:'٦:٠٠ م',name:'خفيف / حلو',
+     items:[{n:'عنب',g:150,nk:'عنب',u:'حفنة'},{n:'شوكولاتة داكنة',g:30,nk:'شوكولاتة',u:'٣ مربعات'},{n:'عسل',g:15,nk:'عسل',u:'م.ص'}],
+     alt: [{n:'رمان',g:150,nk:'رمان',u:'١ حبة'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'},{n:'كاجو',g:30,nk:'كاجو',u:'حفنة'}]},
+  ]},
+  {label:'اليوم الخامس',protein:true,wake:'٨:٠٠ ص',meals:[
+    {time:'٩:٣٠ ص',name:'فطور',
+     items:[{n:'توست',g:60,nk:'توست',u:'٢ شريحة'},{n:'سمن',g:15,nk:'سمن',u:'م.ك'},{n:'عسل أسود',g:20,nk:'عسل اسود',u:'م.ك'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}],
+     alt: [{n:'أرز',g:200,nk:'ارز',u:'كوب'},{n:'زبدة',g:20,nk:'زبدة',u:'م.ك'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}]},
+    {time:'١:٣٠ م',name:'غداء',
+     items:[{n:'لحم بقري',g:150,nk:'لحم بقري',u:'١٥٠ جم'},{n:'أرز',g:300,nk:'ارز',u:'١.٥ كوب'},{n:'بطاطس',g:200,nk:'بطاطس مشوية',u:'٢ حبة'},{n:'زيت زيتون',g:10,nk:'زيت زيتون',u:'م.ص'}],
+     alt: [{n:'لحم بقري',g:150,nk:'لحم بقري',u:'١٥٠ جم'},{n:'أرز',g:300,nk:'ارز',u:'١.٥ كوب'},{n:'بطاطس',g:200,nk:'بطاطس مهروسة',u:'كوب'}]},
+    {time:'٥:٠٠ م',name:'خفيفة',
+     items:[{n:'كاجو',g:30,nk:'كاجو',u:'حفنة'},{n:'توت',g:100,nk:'توت',u:'حفنة'},{n:'رمان',g:150,nk:'رمان',u:'١ حبة'}],
+     alt: [{n:'فول سوداني',g:30,nk:'فول سوداني',u:'حفنة'},{n:'موز',g:120,nk:'موز',u:'١ حبة'}]},
+    {time:'٧:٣٠ م',name:'حلو',
+     items:[{n:'فولية',g:30,nk:'فولية',u:'قطعة'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}],
+     alt: [{n:'حلاوة طحينية',g:40,nk:'حلاوة',u:'شريحة'},{n:'توست',g:30,nk:'توست',u:'١ شريحة'}]},
+  ]},
+  {label:'اليوم السادس',protein:false,wake:'٨:٠٠ ص',meals:[
+    {time:'٩:٣٠ ص',name:'فطور',
+     items:[{n:'توست',g:60,nk:'توست',u:'٢ شريحة'},{n:'نوتيلا',g:30,nk:'نوتيلا',u:'٢ م.ك'},{n:'فراولة',g:100,nk:'فراولة',u:'كوب'}],
+     alt: [{n:'توست',g:60,nk:'توست',u:'٢ شريحة'},{n:'زبدة',g:15,nk:'زبدة',u:'م.ك'},{n:'مربى',g:20,nk:'مربى',u:'م.ك'},{n:'مشمش',g:100,nk:'مشمش',u:'٣ حبات'}]},
+    {time:'٢:٠٠ م',name:'غداء (بدون لحم)',
+     items:[{n:'أرز',g:350,nk:'ارز',u:'١.٧ كوب'},{n:'زيت زيتون',g:15,nk:'زيت زيتون',u:'م.ك'}],
+     alt: [{n:'أرز',g:350,nk:'ارز',u:'١.٧ كوب'},{n:'سمن',g:10,nk:'سمن',u:'م.ص'}]},
+    {time:'٥:٣٠ م',name:'خفيفة',
+     items:[{n:'خوخ',g:150,nk:'خوخ',u:'حبة'},{n:'لوز',g:30,nk:'لوز',u:'حفنة'}],
+     alt: [{n:'كمثرى',g:160,nk:'كمثرى',u:'حبة'},{n:'صنوبر',g:20,nk:'صنوبر',u:'م.ك'}]},
+    {time:'٨:٠٠ م',name:'حلو',
+     items:[{n:'شوكولاتة داكنة',g:30,nk:'شوكولاتة',u:'٣ مربعات'},{n:'عسل',g:15,nk:'عسل',u:'م.ص'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}],
+     alt: [{n:'بسبوسة',g:80,nk:'بسبوسة',u:'قطعة'}]},
+  ]},
+  {label:'اليوم السابع — يوم الدلع',protein:true,wake:'٩:٠٠ ص',meals:[
+    {time:'١٠:٠٠ ص',name:'برانش ملكي',
+     items:[{n:'توست',g:60,nk:'توست',u:'٢ شريحة'},{n:'زبدة',g:20,nk:'زبدة',u:'م.ك كبيرة'},{n:'عسل',g:20,nk:'عسل',u:'م.ك'},{n:'فراولة',g:100,nk:'فراولة',u:'كوب'},{n:'موز',g:120,nk:'موز',u:'١ حبة'}],
+     alt: [{n:'أرز',g:200,nk:'ارز',u:'كوب'},{n:'زبدة',g:25,nk:'زبدة',u:'م.ك كبيرة'},{n:'تمر',g:40,nk:'تمر',u:'٥ حبات'},{n:'كاجو',g:30,nk:'كاجو',u:'حفنة'}]},
+    {time:'٢:٣٠ م',name:'غداء',
+     items:[{n:'لحم جمل',g:150,nk:'لحم جمل',u:'١٥٠ جم'},{n:'أرز',g:300,nk:'ارز',u:'١.٥ كوب'},{n:'بطاطس',g:150,nk:'بطاطس مقلية',u:'حصة'}],
+     alt: [{n:'لحم خروف',g:150,nk:'لحم خروف',u:'١٥٠ جم'},{n:'أرز',g:300,nk:'ارز',u:'١.٥ كوب'},{n:'ذرة',g:150,nk:'ذرة',u:'كوز'}]},
+    {time:'٦:٠٠ م',name:'حلو العصر',
+     items:[{n:'عنب',g:150,nk:'عنب',u:'حفنة'},{n:'فستق',g:30,nk:'فستق',u:'حفنة'},{n:'شوكولاتة داكنة',g:30,nk:'شوكولاتة',u:'٣ مربعات'}],
+     alt: [{n:'رمان',g:150,nk:'رمان',u:'١ حبة'},{n:'توت',g:100,nk:'توت',u:'حفنة'},{n:'كريز',g:100,nk:'كريز',u:'حفنة'}]},
+    {time:'٨:٣٠ م',name:'عشاء',
+     items:[{n:'جبن جودة',g:40,nk:'جبن جودة',u:'٢ شريحة'},{n:'توست',g:30,nk:'توست',u:'١ شريحة'},{n:'زيتون',g:30,nk:'زيتون',u:'٦ حبات'},{n:'عسل أسود',g:20,nk:'عسل اسود',u:'م.ك'}],
+     alt: [{n:'جبن إمنتال',g:40,nk:'جبن امنتال',u:'٢ شريحة'},{n:'توست',g:30,nk:'توست',u:'١ شريحة'},{n:'عسل أسود',g:20,nk:'عسل اسود',u:'م.ك'}]},
+  ]},
+];
+
+const gymDays=[
+  {label:'اليوم الأول (قوة)',protein:true,wake:'٧:٠٠ ص',train:'٦:٠٠ م',meals:[
+    {time:'٧:٣٠ ص',name:'فطور',
+     items:[{n:'أرز',g:250,nk:'ارز',u:'١.٢ كوب'},{n:'زبدة',g:25,nk:'زبدة',u:'م.ك كبيرة'},{n:'عسل',g:25,nk:'عسل',u:'م.ك'},{n:'تمر',g:40,nk:'تمر',u:'٥ حبات'}],
+     alt: [{n:'توست',g:90,nk:'توست',u:'٣ شرائح'},{n:'زبدة',g:25,nk:'زبدة',u:'م.ك كبيرة'},{n:'نوتيلا',g:30,nk:'نوتيلا',u:'م.ك'},{n:'موز',g:120,nk:'موز',u:'١ حبة'}]},
+    {time:'١:٠٠ م',name:'غداء',
+     items:[{n:'لحم بقري',g:150,nk:'لحم بقري',u:'١٥٠ جم'},{n:'أرز',g:350,nk:'ارز',u:'١.٧ كوب'},{n:'بطاطس',g:200,nk:'بطاطس مهروسة',u:'كوب'}],
+     alt: [{n:'لحم خروف',g:150,nk:'لحم خروف',u:'١٥٠ جم'},{n:'أرز',g:350,nk:'ارز',u:'١.٧ كوب'},{n:'ذرة',g:150,nk:'ذرة',u:'كوز'}]},
+    {time:'٥:٠٠ م',name:'⚡ قبل التدريب',bolt:true,
+     items:[{n:'موز',g:120,nk:'موز',u:'١ حبة'},{n:'تمر',g:40,nk:'تمر',u:'٥ حبات'},{n:'كاجو',g:30,nk:'كاجو',u:'حفنة'}],
+     alt: [{n:'أرز',g:150,nk:'ارز',u:'كوب صغير'},{n:'تمر',g:40,nk:'تمر',u:'٥ حبات'}]},
+    {time:'٧:٣٠ م',name:'⭐ بعد التدريب — الأهم',star:true,
+     items:[{n:'أرز',g:350,nk:'ارز',u:'١.٧ كوب'},{n:'لحم مفروم',g:150,nk:'لحم مفروم',u:'١٥٠ جم'},{n:'بطاطس',g:200,nk:'بطاطس مسلوقة',u:'٢ حبة'},{n:'عسل أسود',g:20,nk:'عسل اسود',u:'م.ك'}],
+     alt: [{n:'أرز',g:350,nk:'ارز',u:'١.٧ كوب'},{n:'كبدة',g:120,nk:'كبدة',u:'١٢٠ جم'},{n:'كاجو',g:30,nk:'كاجو',u:'حفنة'}]},
+    {time:'٩:٣٠ م',name:'قبل النوم',
+     items:[{n:'جبن جودة',g:50,nk:'جبن جودة',u:'٢.٥ شريحة'},{n:'توست',g:30,nk:'توست',u:'١ شريحة'},{n:'عسل',g:15,nk:'عسل',u:'م.ص'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}],
+     alt: [{n:'عين جمل',g:30,nk:'عين جمل',u:'حفنة'},{n:'لوز',g:30,nk:'لوز',u:'حفنة'},{n:'شوكولاتة داكنة',g:30,nk:'شوكولاتة',u:'٣ مربعات'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}]},
+  ]},
+  {label:'اليوم الثاني (راحة)',protein:false,wake:'٧:٠٠ ص',meals:[
+    {time:'٨:٠٠ ص',name:'فطور',
+     items:[{n:'توست',g:60,nk:'توست',u:'٢ شريحة'},{n:'زبدة',g:20,nk:'زبدة',u:'م.ك'},{n:'مربى',g:20,nk:'مربى',u:'م.ك'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}],
+     alt: [{n:'أرز',g:200,nk:'ارز',u:'كوب'},{n:'زبدة',g:20,nk:'زبدة',u:'م.ك'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}]},
+    {time:'١:٣٠ م',name:'غداء',
+     items:[{n:'أرز',g:300,nk:'ارز',u:'١.٥ كوب'},{n:'بطاطس',g:150,nk:'بطاطس مقلية',u:'حصة'},{n:'جبن شيدر',g:40,nk:'جبن شيدر',u:'٢ شريحة'},{n:'زيتون',g:30,nk:'زيتون',u:'٦ حبات'}],
+     alt: [{n:'بطاطس',g:300,nk:'بطاطس مهروسة',u:'كوب'},{n:'توست',g:60,nk:'توست',u:'٢ شريحة'},{n:'جبن فلمنك',g:40,nk:'جبن فلمنك',u:'٢ شريحة'}]},
+    {time:'٥:٠٠ م',name:'خفيفة',
+     items:[{n:'عنب',g:150,nk:'عنب',u:'حفنة'},{n:'صنوبر',g:20,nk:'صنوبر',u:'م.ك'}],
+     alt: [{n:'رمان',g:150,nk:'رمان',u:'١ حبة'},{n:'فستق',g:30,nk:'فستق',u:'حفنة'}]},
+    {time:'٨:٠٠ م',name:'عشاء',
+     items:[{n:'شوكولاتة داكنة',g:30,nk:'شوكولاتة',u:'٣ مربعات'},{n:'عسل',g:15,nk:'عسل',u:'م.ص'},{n:'كاجو',g:30,nk:'كاجو',u:'حفنة'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}],
+     alt: [{n:'بسبوسة',g:80,nk:'بسبوسة',u:'قطعة'}]},
+  ]},
+  {label:'اليوم الثالث (كارديو)',protein:true,wake:'٧:٠٠ ص',train:'٧:٠٠ م',meals:[
+    {time:'٧:٣٠ ص',name:'فطور',
+     items:[{n:'أرز',g:250,nk:'ارز',u:'١.٢ كوب'},{n:'زبدة',g:20,nk:'زبدة',u:'م.ك'},{n:'تمر',g:40,nk:'تمر',u:'٥ حبات'},{n:'رمان',g:150,nk:'رمان',u:'١ حبة'}],
+     alt: [{n:'توست',g:60,nk:'توست',u:'٢ شريحة'},{n:'عسل',g:20,nk:'عسل',u:'م.ك'},{n:'موز',g:120,nk:'موز',u:'١ حبة'}]},
+    {time:'١:٠٠ م',name:'غداء',
+     items:[{n:'سردين',g:150,nk:'سردين',u:'١٥٠ جم'},{n:'أرز',g:300,nk:'ارز',u:'١.٥ كوب'},{n:'بطاطس',g:200,nk:'بطاطس مسلوقة',u:'٢ حبة'},{n:'زيت زيتون',g:10,nk:'زيت زيتون',u:'م.ص'}],
+     alt: [{n:'سمك بحر',g:150,nk:'سمك بحر',u:'١٥٠ جم'},{n:'أرز',g:300,nk:'ارز',u:'١.٥ كوب'},{n:'ذرة',g:150,nk:'ذرة',u:'كوز'}]},
+    {time:'٦:٠٠ م',name:'⚡ قبل الكارديو',bolt:true,
+     items:[{n:'تمر',g:40,nk:'تمر',u:'٥ حبات'},{n:'موز',g:120,nk:'موز',u:'١ حبة'}],
+     alt: [{n:'كاجو',g:30,nk:'كاجو',u:'حفنة'},{n:'تمر',g:40,nk:'تمر',u:'٥ حبات'}]},
+    {time:'٨:٣٠ م',name:'⭐ بعد الكارديو',star:true,
+     items:[{n:'أرز',g:300,nk:'ارز',u:'١.٥ كوب'},{n:'كبدة',g:120,nk:'كبدة',u:'١٢٠ جم'},{n:'بطاطس',g:150,nk:'بطاطس مسلوقة',u:'حبة ونص'}],
+     alt: [{n:'أرز',g:300,nk:'ارز',u:'١.٥ كوب'},{n:'لحم مفروم',g:150,nk:'لحم مفروم',u:'١٥٠ جم'},{n:'كاجو',g:30,nk:'كاجو',u:'حفنة'}]},
+    {time:'١٠:٠٠ م',name:'قبل النوم',
+     items:[{n:'جبن جودة',g:50,nk:'جبن جودة',u:'٢.٥ شريحة'},{n:'توست',g:30,nk:'توست',u:'١ شريحة'},{n:'عسل أسود',g:20,nk:'عسل اسود',u:'م.ك'}],
+     alt: [{n:'كاجو',g:30,nk:'كاجو',u:'حفنة'},{n:'شوكولاتة داكنة',g:30,nk:'شوكولاتة',u:'٣ مربعات'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}]},
+  ]},
+  {label:'اليوم الرابع — صيام + راحة',protein:false,fast:true,wake:'٧:٠٠ ص',meals:[
+    {time:'٩:٠٠ ص',name:'إفطار الصيام',
+     items:[{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}],
+     alt: [{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}]},
+    {time:'١:٣٠ م',name:'وجبة رئيسية',
+     items:[{n:'أرز',g:350,nk:'ارز',u:'١.٧ كوب'},{n:'صنوبر',g:20,nk:'صنوبر',u:'م.ك'},{n:'بطاطس',g:200,nk:'بطاطس مسلوقة',u:'٢ حبة'},{n:'سمن',g:15,nk:'سمن',u:'م.ك'}],
+     alt: [{n:'أرز',g:350,nk:'ارز',u:'١.٧ كوب'},{n:'بطاطس',g:250,nk:'بطاطس مهروسة',u:'كوب كبير'},{n:'زبدة',g:15,nk:'زبدة',u:'م.ك'}]},
+    {time:'٦:٠٠ م',name:'خفيف',
+     items:[{n:'كاجو',g:30,nk:'كاجو',u:'حفنة'},{n:'رمان',g:150,nk:'رمان',u:'١ حبة'},{n:'شوكولاتة داكنة',g:30,nk:'شوكولاتة',u:'٣ مربعات'}],
+     alt: [{n:'تمر',g:40,nk:'تمر',u:'٥ حبات'},{n:'عين جمل',g:30,nk:'عين جمل',u:'حفنة'}]},
+  ]},
+  {label:'اليوم الخامس (قوة)',protein:true,wake:'٧:٠٠ ص',train:'٦:٠٠ م',meals:[
+    {time:'٧:٣٠ ص',name:'فطور',
+     items:[{n:'توست',g:90,nk:'توست',u:'٣ شرائح'},{n:'سمن',g:20,nk:'سمن',u:'م.ك'},{n:'عسل أسود',g:20,nk:'عسل اسود',u:'م.ك'},{n:'تمر',g:40,nk:'تمر',u:'٥ حبات'}],
+     alt: [{n:'أرز',g:250,nk:'ارز',u:'١.٢ كوب'},{n:'زبدة',g:25,nk:'زبدة',u:'م.ك كبيرة'},{n:'تمر',g:40,nk:'تمر',u:'٥ حبات'},{n:'موز',g:120,nk:'موز',u:'١ حبة'}]},
+    {time:'١:٠٠ م',name:'غداء',
+     items:[{n:'لحم خروف',g:150,nk:'لحم خروف',u:'١٥٠ جم'},{n:'أرز',g:350,nk:'ارز',u:'١.٧ كوب'},{n:'بطاطس',g:200,nk:'بطاطس مشوية',u:'٢ حبة'}],
+     alt: [{n:'لحم بقري',g:150,nk:'لحم بقري',u:'١٥٠ جم'},{n:'أرز',g:350,nk:'ارز',u:'١.٧ كوب'},{n:'ذرة',g:150,nk:'ذرة',u:'كوز'}]},
+    {time:'٥:٠٠ م',name:'⚡ قبل التدريب',bolt:true,
+     items:[{n:'تمر',g:40,nk:'تمر',u:'٥ حبات'},{n:'موز',g:120,nk:'موز',u:'١ حبة'},{n:'فستق',g:30,nk:'فستق',u:'حفنة'}],
+     alt: [{n:'أرز',g:150,nk:'ارز',u:'كوب صغير'},{n:'عسل',g:20,nk:'عسل',u:'م.ك'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}]},
+    {time:'٧:٣٠ م',name:'⭐ بعد التدريب — الأهم',star:true,
+     items:[{n:'أرز',g:350,nk:'ارز',u:'١.٧ كوب'},{n:'لحم جمل',g:150,nk:'لحم جمل',u:'١٥٠ جم'},{n:'بطاطس',g:200,nk:'بطاطس مسلوقة',u:'٢ حبة'},{n:'عسل',g:20,nk:'عسل',u:'م.ك'}],
+     alt: [{n:'أرز',g:350,nk:'ارز',u:'١.٧ كوب'},{n:'كبدة',g:120,nk:'كبدة',u:'١٢٠ جم'},{n:'كاجو',g:30,nk:'كاجو',u:'حفنة'},{n:'عسل أسود',g:20,nk:'عسل اسود',u:'م.ك'}]},
+    {time:'٩:٣٠ م',name:'قبل النوم',
+     items:[{n:'جبن شيدر',g:50,nk:'جبن شيدر',u:'٢.٥ شريحة'},{n:'توست',g:30,nk:'توست',u:'١ شريحة'},{n:'زيتون',g:30,nk:'زيتون',u:'٦ حبات'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}],
+     alt: [{n:'عين جمل',g:30,nk:'عين جمل',u:'حفنة'},{n:'شوكولاتة داكنة',g:30,nk:'شوكولاتة',u:'٣ مربعات'},{n:'عسل',g:15,nk:'عسل',u:'م.ص'}]},
+  ]},
+  {label:'اليوم السادس (راحة)',protein:false,wake:'٧:٠٠ ص',meals:[
+    {time:'٨:٠٠ ص',name:'فطور',
+     items:[{n:'توست',g:60,nk:'توست',u:'٢ شريحة'},{n:'نوتيلا',g:30,nk:'نوتيلا',u:'٢ م.ك'},{n:'فراولة',g:100,nk:'فراولة',u:'كوب'}],
+     alt: [{n:'توست',g:60,nk:'توست',u:'٢ شريحة'},{n:'مربى',g:20,nk:'مربى',u:'م.ك'},{n:'رمان',g:150,nk:'رمان',u:'١ حبة'}]},
+    {time:'٢:٠٠ م',name:'غداء',
+     items:[{n:'أرز',g:350,nk:'ارز',u:'١.٧ كوب'},{n:'زيت زيتون',g:15,nk:'زيت زيتون',u:'م.ك'}],
+     alt: [{n:'أرز',g:350,nk:'ارز',u:'١.٧ كوب'},{n:'سمن',g:10,nk:'سمن',u:'م.ص'}]},
+    {time:'٥:٣٠ م',name:'خفيف',
+     items:[{n:'خوخ',g:150,nk:'خوخ',u:'حبة'},{n:'لوز',g:30,nk:'لوز',u:'حفنة'}],
+     alt: [{n:'كمثرى',g:160,nk:'كمثرى',u:'حبة'},{n:'فستق',g:30,nk:'فستق',u:'حفنة'}]},
+    {time:'٨:٠٠ م',name:'حلو',
+     items:[{n:'شوكولاتة داكنة',g:30,nk:'شوكولاتة',u:'٣ مربعات'},{n:'مربى',g:20,nk:'مربى',u:'م.ك'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}],
+     alt: [{n:'بسبوسة',g:80,nk:'بسبوسة',u:'قطعة'}]},
+  ]},
+  {label:'اليوم السابع (استرجاع)',protein:true,wake:'٨:٠٠ ص',train:'٥:٠٠ م',meals:[
+    {time:'٩:٠٠ ص',name:'فطور ملكي',
+     items:[{n:'أرز',g:250,nk:'ارز',u:'١.٢ كوب'},{n:'زبدة',g:25,nk:'زبدة',u:'م.ك كبيرة'},{n:'تمر',g:40,nk:'تمر',u:'٥ حبات'},{n:'كاجو',g:30,nk:'كاجو',u:'حفنة'},{n:'عسل',g:20,nk:'عسل',u:'م.ك'}],
+     alt: [{n:'توست',g:90,nk:'توست',u:'٣ شرائح'},{n:'زبدة',g:25,nk:'زبدة',u:'م.ك كبيرة'},{n:'عسل',g:20,nk:'عسل',u:'م.ك'},{n:'فراولة',g:100,nk:'فراولة',u:'كوب'},{n:'موز',g:120,nk:'موز',u:'١ حبة'}]},
+    {time:'١:٣٠ م',name:'غداء',
+     items:[{n:'حمام',g:200,nk:'حمام',u:'١ حمامة'},{n:'أرز',g:300,nk:'ارز',u:'١.٥ كوب'},{n:'بطاطس',g:200,nk:'بطاطس مهروسة',u:'كوب'}],
+     alt: [{n:'سمان',g:150,nk:'سمان',u:'٢ سمانة'},{n:'أرز',g:300,nk:'ارز',u:'١.٥ كوب'},{n:'ذرة',g:150,nk:'ذرة',u:'كوز'}]},
+    {time:'٤:٠٠ م',name:'⚡ قبل التدريب',bolt:true,
+     items:[{n:'تمر',g:40,nk:'تمر',u:'٥ حبات'},{n:'كاجو',g:30,nk:'كاجو',u:'حفنة'},{n:'موز',g:120,nk:'موز',u:'١ حبة'}],
+     alt: [{n:'أرز',g:150,nk:'ارز',u:'كوب صغير'},{n:'عسل',g:20,nk:'عسل',u:'م.ك'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}]},
+    {time:'٦:٣٠ م',name:'⭐ بعد التدريب',star:true,
+     items:[{n:'لحم مفروم',g:150,nk:'لحم مفروم',u:'١٥٠ جم'},{n:'أرز',g:350,nk:'ارز',u:'١.٧ كوب'},{n:'بطاطس',g:200,nk:'بطاطس مسلوقة',u:'٢ حبة'},{n:'عسل أسود',g:20,nk:'عسل اسود',u:'م.ك'}],
+     alt: [{n:'أرنب',g:150,nk:'ارنب',u:'١٥٠ جم'},{n:'أرز',g:350,nk:'ارز',u:'١.٧ كوب'},{n:'كاجو',g:30,nk:'كاجو',u:'حفنة'}]},
+    {time:'٩:٠٠ م',name:'قبل النوم',
+     items:[{n:'جبن جودة',g:50,nk:'جبن جودة',u:'٢.٥ شريحة'},{n:'توست',g:30,nk:'توست',u:'١ شريحة'},{n:'رمان',g:150,nk:'رمان',u:'١ حبة'},{n:'تمر',g:25,nk:'تمر',u:'٣ حبات'}],
+     alt: [{n:'عين جمل',g:30,nk:'عين جمل',u:'حفنة'},{n:'شوكولاتة داكنة',g:30,nk:'شوكولاتة',u:'٣ مربعات'},{n:'عسل',g:15,nk:'عسل',u:'م.ص'}]},
+  ]},
+];
+
+const weekNotes=[
+  'الأسبوع الأول: ركّز فقط على إيقاف الدجاج والخبز الأبيض. خطوة واحدة فقط — لا تغير كل شيء دفعة.',
+  'الأسبوع الثاني: أضف رمان يومياً + ١٥ دقيقة شمس. الوزن قد ينزل ١-٢ كجم.',
+  'الأسبوع الثالث: ابدأ الصيام (إثنين وخميس). المزاج سيتحسن ملحوظاً.',
+  'الأسبوع الرابع: ثبّت وقت نومك — هذا أهم قرار. ٢-٤ كجم نزلت إذا التزمت.'
+];
+const coachData=[
+  {color:'#185FA5',title:'🌙 النوم — أولويتك رقم ١',tips:['الهرمونات تُفرز ٩٠٪ منها أثناء النوم — جودة نومك تعكس صحتك الهرمونية كلها','ابدأ بتثبيت موعد صحيان ثابت يومياً حتى لو نمت متأخراً','اخفض الإضاءة ساعة قبل النوم — ضوء الشاشة يقطع الميلاتونين','درجة حرارة الغرفة ١٦-١٨ درجة = نوم أعمق بكثير']},
+  {color:'#BA7517',title:'☀️ الشمس — دواء مجاني',tips:['١٥-٢٠ دقيقة شمس صباحية = ٢٠,٠٠٠ وحدة فيتامين D طبيعية','نقص فيتامين D يضر الصحة الهرمونية مباشرة','اجعل الشرفة عادة صباحية — ولو ١٠ دقائق','الشمس تضبط ساعتك البيولوجية وتحسن النوم والمزاج']},
+  {color:'#1D9E75',title:'🏋️ التمرين — صحة هرمونية طبيعية',tips:['السكوات والديدليفت = أقوى تمارين لتحسين الصحة الهرمونية','ابدأ بـ ٣ أيام أسبوعياً فقط — الإفراط ضار','مدة الجلسة المثالية: ٤٥-٦٠ دقيقة','خسارة ١٥ كجم ستغير حياتك كلها']},
+  {color:'#D4537E',title:'❤️ الصحة الهرمونية — نصائح تغذوية',tips:['رمان يومياً — من أقوى الأغذية لدعم الصحة الهرمونية (ثبت علمياً)','زنك: اللحوم الحمراء + المكسرات = أهم معدن للصحة الهرمونية','الدهون الصحية (زيت زيتون + زبدة) ضرورية لإنتاجه','النوم ٧-٩ ساعات — الأثر الأول والأقوى']},
+  {color:'#3B6D11',title:'📅 خطة ٣٠ يوم الأولى',tips:['الأسبوع ١: توقّف عن الدجاج والخبز العادي فقط','الأسبوع ٢: أضف ١٥ دقيقة شمس + رمان يومي','الأسبوع ٣: ابدأ تمرين ٣ أيام','الأسبوع ٤: ثبّت وقت نوم ثابت']},
+];
+
+// ── helpers ──────────────────────────────────────────────
+function calc(items){
+  let c=0,p=0,f=0;
+  items.forEach(i=>{const n=NUTR[i.nk];if(n){c+=n.c*i.g/100;p+=n.p*i.g/100;f+=n.f*i.g/100;}});
+  return {c:Math.round(c),p:Math.round(p*10)/10,f:Math.round(f*10)/10};
+}
+function dayCalc(meals){
+  let tc=0,tp=0,tf=0;
+  meals.forEach(m=>{const r=calc(m.items);tc+=r.c;tp+=r.p;tf+=r.f;});
+  return {c:tc,p:Math.round(tp*10)/10,f:Math.round(tf*10)/10};
+}
+function ingHtml(items){
+  return items.map(i=>{
+    const f=IMGS[i.n];
+    const img=f?`<img class="ii" src="${U+f.p+SQ}" onerror="this.style.display='none';this.nextSibling.style.display='inline-block'" alt="${i.n}"><span class="ie" style="display:none">${f.e||'🍽️'}</span>`
+              :`<span class="ie">🍽️</span>`;
+    return `<span class="ing">${img}<span class="in">${i.n}</span><span class="ig">${i.u}</span></span>`;
+  }).join('');
+}
+
+// ── tabs ─────────────────────────────────────────────────
+let curTab=0,curWeek=[0,0],curDay=[0,0],altState={};
+function goTab(t){
+  curTab=t;
+  document.querySelectorAll('.tab').forEach((b,i)=>b.classList.toggle('on',i===t));
+  [0,1,2,3].forEach(i=>document.getElementById('t'+i).classList.toggle('hidden',i!==t));
+  altState={};
+  if(t===1||t===2)renderPlan(t);
+}
+
+// ── food grid ────────────────────────────────────────────
+function fc(name,cls){
+  const f=IMGS[name]||{e:'🍽️',a:''};
+  const src=f.p?U+f.p+Q:'';
+  const imgHtml=src?`<img src="${src}" onerror="this.style.display='none';this.nextSibling.style.display='flex'" alt="${name}"><div class="em" style="display:none">${f.e}</div>`:`<div class="em">${f.e}</div>`;
+  const badX=cls==='bad'?'<span class="bad-x">✗</span>':'';
+  const starB=cls==='star-item'?'<span class="star-b">⭐ أساسي</span>':'';
+  return `<div class="fc${cls?' '+cls:''}">`+
+    `<div class="fi">${imgHtml}${badX}${starB}</div>`+
+    `<div class="fn">${name}</div>`+
+    `<div class="falt">${f.a||''}</div>`+
+    `</div>`;
+}
+function renderAllowed(){
+  let h='';
+  allowedCats.forEach(c=>{
+    h+=`<div style="margin-bottom:1.25rem"><div class="cat-lbl">${c.l}</div><div class="food-grid">`;
+    c.items.forEach(n=>h+=fc(n,c.star?'star-item':''));
+    h+=`</div></div>`;
+  });
+  document.getElementById('ag').innerHTML=h;
+}
+function renderForbidden(){
+  let h='';
+  forbiddenCats.forEach(c=>{
+    h+=`<div style="margin-bottom:1.25rem"><div class="cat-lbl" style="background:#fff5f5;color:#dc2626">${c.l}</div><div class="food-grid">`;
+    c.items.forEach(n=>h+=fc(n,'bad'));
+    h+=`</div></div>`;
+  });
+  document.getElementById('fg').innerHTML=h;
+}
+
+// ── plan ─────────────────────────────────────────────────
+function renderPlan(ti){
+  const days=ti===1?normalDays:gymDays;
+  const wk=curWeek[ti-1],di=curDay[ti-1];
+  const wl=['الأسبوع الأول','الأسبوع الثاني','الأسبوع الثالث','الأسبوع الرابع'];
+  document.getElementById('wb'+ti).innerHTML=wl.map((w,i)=>`<button class="wbtn${i===wk?' on':''}" onclick="pickWeek(${ti},${i})">${w}</button>`).join('');
+  document.getElementById('wn'+ti).textContent=weekNotes[wk];
+  document.getElementById('db'+ti).innerHTML=days.map((d,i)=>`<button class="dbtn${i===di?' on':''}${d.fast?' fast':''}" onclick="pickDay(${ti},${i})">يوم ${i+1}</button>`).join('');
+  renderDay(ti,days[di]);
+}
+function renderDay(ti,day){
+  const el=document.getElementById('dc'+ti);
+  const tot=dayCalc(day.meals);
+  const pb=day.protein?`<span class="bdg p">يوم بروتين</span>`:`<span class="bdg">يوم بدون لحم</span>`;
+  const fb=day.fast?`<span class="bdg f">🌙 صيام مستحب</span>`:'';
+  const tb=day.train?`<span class="bdg t">🏋️ تدريب: ${day.train}</span>`:'';
+  el.innerHTML=
+    `<div class="dhdr"><div class="dlbl">${day.label}</div><div class="badges"><span class="bdg">⏰ صحيان: ${day.wake}</span>${tb}${fb}${pb}</div></div>`+
+    `<div class="day-nutr">`+
+    `<div class="dn cal"><div class="dn-v">${tot.c}</div><div class="dn-l">سعرات حرارية (kcal)</div></div>`+
+    `<div class="dn pro"><div class="dn-v">${tot.p}g</div><div class="dn-l">بروتين</div></div>`+
+    `<div class="dn fat"><div class="dn-v">${tot.f}g</div><div class="dn-l">دهون</div></div>`+
+    `</div>`+
+    `<p class="hint">اضغط "بديل" لتبديل الوجبة · السعرات تتحدث تلقائياً</p>`+
+    day.meals.map((m,i)=>renderMeal(m,ti,i,day)).join('');
+}
+function renderMeal(m,ti,mi,day){
+  const key=ti+'_'+mi;
+  const isAlt=!!altState[key];
+  const items=isAlt?m.alt:m.items;
+  const nr=calc(items);
+  const isStar=m.star||false,isBolt=m.bolt||false;
+  return `<div class="meal${isStar?' star':isBolt?' bolt':''}" id="meal${key}">`+
+    `<div class="mhdr${isStar?' star':isBolt?' bolt':''}"><span class="mname">${m.name}</span><span class="mtime">${m.time}</span></div>`+
+    `<div class="mbody">`+
+    `<div class="mnutr"><span class="mc cal">🔥 ${nr.c} kcal</span><span class="mc pro">💪 ${nr.p}g بروتين</span><span class="mc fat">🫒 ${nr.f}g دهون</span></div>`+
+    `<div class="ings">${ingHtml(items)}</div>`+
+    `<button class="altbtn" onclick="toggleAlt(${ti},${mi})">${isAlt?'← الأساسي':'بديل ←'}</button>`+
+    `</div></div>`;
+}
+function toggleAlt(ti,mi){
+  const key=ti+'_'+mi;
+  altState[key]=!altState[key];
+  const days=ti===1?normalDays:gymDays;
+  const day=days[curDay[ti-1]];
+  const m=day.meals[mi];
+  document.getElementById('meal'+key).outerHTML=renderMeal(m,ti,mi,day);
+  // recalc day total
+  const tot=dayCalc(day.meals.map((mx,ii)=>{return {items:(altState[ti+'_'+ii]?mx.alt:mx.items)||mx.items};}));
+  document.querySelector('#dc'+ti+' .dn.cal .dn-v').textContent=tot.c;
+  document.querySelector('#dc'+ti+' .dn.pro .dn-v').textContent=tot.p+'g';
+  document.querySelector('#dc'+ti+' .dn.fat .dn-v').textContent=tot.f+'g';
+}
+function pickWeek(ti,wk){curWeek[ti-1]=wk;renderPlan(ti);}
+function pickDay(ti,di){curDay[ti-1]=di;altState={};renderPlan(ti);}
+
+function renderCoach(){
+  document.getElementById('co').innerHTML=coachData.map(c=>
+    `<div class="ccard"><div class="cchdr" style="color:${c.color}">${c.title}</div>`+
+    `<div class="ccbody">${c.tips.map(t=>`<div class="tip"><span style="color:${c.color}">◆</span><span>${t}</span></div>`).join('')}</div></div>`
+  ).join('');
+}
+
+renderAllowed();renderForbidden();renderCoach();renderPlan(1);renderPlan(2);
+</script>
+</body>
+</html>
