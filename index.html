@@ -180,7 +180,19 @@ h1{font-size:22px;font-weight:700;margin-bottom:4px}
 </div>
 </main>
 <script>
-const U='https://images.unsplash.com/photo-',Q='?w=220&h=220&fit=crop&crop=center&q=80',SQ='?w=60&h=60&fit=crop&crop=center&q=80';
+const SLUG={
+  'أرز':'rice','بطاطس':'potato','تمر':'dates','زبدة':'butter','سكر':'sugar','عسل':'honey','سمن':'ghee','عسل أسود':'molasses',
+  'لحم خروف':'lamb','لحم بقري':'beef','لحم جمل':'camel-meat','لحم مفروم':'ground-beef','كبدة':'liver','أرنب':'rabbit','كوارع':'trotters','حمام':'pigeon','سمان':'quail','سردين':'sardines','سمك بحر':'sea-fish',
+  'جبن جودة':'gouda','جبن شيدر':'cheddar','جبن إمنتال':'emmental','جبن كاشكوال':'kashkaval','جبن فلمنك':'edam','مثلثات':'cheese-triangles','توست':'toast','جبنة بيضاء':'white-cheese','زبادي':'yogurt','حليب':'milk',
+  'عنب':'grapes','رمان':'pomegranate','موز':'banana','فراولة':'strawberry','تفاح':'apple','كريز':'cherries','توت':'berries','مشمش':'apricot','خوخ':'peach','كمثرى':'pear','تين':'fig','بطيخ':'watermelon',
+  'شوكولاتة داكنة':'dark-chocolate','نوتيلا':'nutella','حلاوة طحينية':'halva','بسبوسة':'basbousa','مربى':'jam','فولية':'peanut-brittle','سمسمية':'sesame-candy',
+  'لوز':'almonds','كاجو':'cashews','عين جمل':'walnuts','فستق':'pistachios','صنوبر':'pine-nuts','فول سوداني':'peanuts',
+  'شاي أخضر':'green-tea','قهوة':'coffee','زعتر':'zaatar','شاي أحمر':'black-tea','كولا':'cola',
+  'ذرة':'corn','زيت زيتون':'olive-oil','زيتون':'olives','شيبسي':'chips',
+  'دجاج':'chicken','بيض':'eggs','خبز أبيض':'white-bread','مكرونة':'pasta',
+  'طماطم':'tomatoes','خيار':'cucumber','سبانخ':'spinach','ملوخية':'molokhia','عدس':'lentils','فول':'fava-beans','حمص':'chickpeas'
+};
+function imgSrc(name,small){const s=SLUG[name];return s?'images/'+s+(small?'-sm':'')+'.webp':'';}
 
 // Nutrition per 100g: {c:calories, p:protein_g, f:fat_g}
 const NUTR={
@@ -241,80 +253,80 @@ const NUTR={
 };
 
 const IMGS={
-  'أرز':              {e:'🍚',p:'1536304929831-ee1ca9d44906',a:'Rice · رز · Riz'},
-  'بطاطس':            {e:'🥔',p:'1518977676601-b53f82aba655',a:'Potatoes · بطاطا · Patates'},
-  'تمر':              {e:'🌴',p:'1598965535830-a4e9d68ae8c7',a:'Dates · رطب · خرما'},
-  'زبدة':             {e:'🧈',p:'1589985270826-4b7bb135bc9d',a:'Butter · لورباك · زبدة بلدي'},
-  'سكر':              {e:'🍬',p:'1574182658906-6b95e0e1aa29',a:'Sugar · سكر أبيض'},
-  'عسل':              {e:'🍯',p:'1558642452-9d2a7deb7f62',a:'Honey · عسل نحل طبيعي'},
-  'سمن':              {e:'🧈',p:'1589985270826-4b7bb135bc9d',a:'Ghee · سمن عربي · Clarified Butter'},
-  'عسل أسود':         {e:'🍯',p:'1558642452-9d2a7deb7f62',a:'Molasses · Blackstrap · دبس'},
-  'لحم خروف':         {e:'🥩',p:'1544025162-d76538747c2b',a:'Lamb · Mutton · ضاني · خروف'},
-  'لحم بقري':         {e:'🥩',p:'1546964124-0cce460f38ef',a:'Beef · بقر · بتلو · كندوز'},
-  'لحم جمل':          {e:'🥩',p:'1544025162-d76538747c2b',a:'Camel Meat · إبل · ناقة'},
-  'لحم مفروم':        {e:'🥩',p:'1546964124-0cce460f38ef',a:'Ground Beef · لحمة مفرومة'},
-  'كبدة':             {e:'🫀',p:'1544025162-d76538747c2b',a:'Liver · كبد · Kabd'},
-  'أرنب':             {e:'🐇',p:'1548199973-ec2cb9df46f7',a:'Rabbit · Bunny · أرانب'},
-  'كوارع':            {e:'🦴',p:'1544025162-d76538747c2b',a:'Trotters · قوائم · كراعين'},
-  'حمام':             {e:'🕊️',p:'1544025162-d76538747c2b',a:'Pigeon · Squab · يمام'},
-  'سمان':             {e:'🐦',p:'1544025162-d76538747c2b',a:'Quail · سلوى · طير صغير'},
-  'سردين':            {e:'🐟',p:'1510130387422-82bed34b37e9',a:'Sardines · سمك سردين'},
-  'سمك بحر':          {e:'🐠',p:'1519708227418-a2d0867b35dc',a:'Sea Fish · سمك بحري'},
-  'جبن جودة':         {e:'🧀',p:'1486297678162-eb2a19b0a32d',a:'Gouda Cheese · جودة هولندية'},
-  'جبن شيدر':         {e:'🧀',p:'1452195100486-9927560c6930',a:'Cheddar Cheese · شيدر'},
-  'جبن إمنتال':       {e:'🧀',p:'1486297678162-eb2a19b0a32d',a:'Emmental · Swiss Cheese · جبن سويسري'},
-  'جبن كاشكوال':      {e:'🧀',p:'1452195100486-9927560c6930',a:'Kashkaval · كاشكفال · ريكفورد'},
-  'جبن فلمنك':        {e:'🧀',p:'1486297678162-eb2a19b0a32d',a:'Edam Cheese · EDAM · فلمنكية'},
-  'مثلثات':           {e:'🔺',p:'1486297678162-eb2a19b0a32d',a:'Processed Cheese Triangles'},
-  'توست':             {e:'🍞',p:'1558618666-fcd25c85cd64',a:'Whole Grain Toast · توست النخالة · خبز أسمر'},
-  'عنب':              {e:'🍇',p:'1537640538966-79f369143f8f',a:'Grapes · Raisins · عنب أسود'},
-  'رمان':             {e:'🍎',p:'1615485291234-9d694218aeb3',a:'Pomegranate · حب الرمان'},
-  'موز':              {e:'🍌',p:'1603833665858-e61d17a86224',a:'Banana · موزة'},
-  'فراولة':           {e:'🍓',p:'1464965911861-746a04b4bca6',a:'Strawberry · Strawberries · فريز'},
-  'تفاح':             {e:'🍎',p:'1567306226416-28f0efdc88ce',a:'Apple · تفاحة'},
-  'كريز':             {e:'🍒',p:'1528821335709-3c5b3c58f1fb',a:'Cherries · كرز · Cherry'},
-  'توت':              {e:'🫐',p:'1490474418585-ba9bad8fd0ea',a:'Berries · Mulberry · توت شامي · Blueberries'},
-  'مشمش':             {e:'🍑',p:'1557800636-894a64c1696f',a:'Apricot · Apricots · بخارة'},
-  'خوخ':              {e:'🍑',p:'1568702846914-96b305d2aaeb',a:'Peach · دراق · Nectarine'},
-  'كمثرى':            {e:'🍐',p:'1508739773434-c26b3d09e071',a:'Pear · إجاص · إنجاص · Poire'},
-  'تين':              {e:'🌿',p:'1629046272588-0dfaa5f73586',a:'Fig · تين أسود · Figue'},
-  'شوكولاتة داكنة':   {e:'🍫',p:'1606312619070-d48b795e84e5',a:'Dark Chocolate 70%+ · شوكولا داكن'},
-  'نوتيلا':           {e:'🫙',p:'1558642452-9d2a7deb7f62',a:'Nutella · كريمة الشوكولاتة والبندق'},
-  'حلاوة طحينية':     {e:'🍮',p:'1565299585323-38d6b0865b47',a:'Halva · Halawa · حلاوة · Tahini Candy'},
-  'بسبوسة':           {e:'🍰',p:'1578985545062-69928b1d9587',a:'Basbousa · سميت · هريسة · Semolina Cake'},
-  'مربى':             {e:'🫙',p:'1597714026523-cfb7f047ec25',a:'Jam · Marmalade · مرملاد · Confiture'},
-  'فولية':            {e:'🍬',p:'1558642452-9d2a7deb7f62',a:'Peanut Brittle · فولية · حلاوة الفول'},
-  'سمسمية':           {e:'🍬',p:'1558642452-9d2a7deb7f62',a:'Sesame Candy · سمسمية · حلاوة السمسم'},
-  'لوز':              {e:'🌰',p:'1574323347407-f5e1ad6d020b',a:'Almonds · لوز حلو'},
-  'كاجو':             {e:'🥜',p:'1599599810769-bcde5a160d32',a:'Cashews · Cashew Nuts · كاجو'},
-  'عين جمل':          {e:'🪨',p:'1563412580-f66a0f28f763',a:'Walnuts · جوز · عين الجمل · Noix'},
-  'فستق':             {e:'🌿',p:'1548159776-f6a1e8a8e22e',a:'Pistachios · فستق حلبي · Pistache'},
-  'صنوبر':            {e:'🌲',p:'1620832072834-0e7a6c374c24',a:'Pine Nuts · حب الصنوبر · Pignons'},
-  'فول سوداني':       {e:'🥜',p:'1574323347407-f5e1ad6d020b',a:'Peanuts · فول سوداني · Groundnuts'},
-  'شاي أخضر':         {e:'🍵',p:'1544787219-7f47ccb76574',a:'Green Tea · شاي أخضر'},
-  'قهوة':             {e:'☕',p:'1495474472287-4d71bcdd2085',a:'Coffee · Turkish Coffee · قهوة تركي'},
-  'زعتر':             {e:'🌿',p:'1539252554453-80ab65ad5571',a:'Thyme · Zaatar · زعتر'},
-  'ذرة':              {e:'🌽',p:'1551754655-2b37bfed6dac',a:'Corn · Maize · ذرة شامية'},
-  'زيت زيتون':        {e:'🫒',p:'1474979078687-f15af1a5c08a',a:'Olive Oil · زيت الزيتون البكر · Huile d Olive'},
-  'زيتون':            {e:'🫒',p:'1574484284077-8f62a47c2bc8',a:'Olives · زيتون كالاماتا'},
-  'شيبسي':            {e:'🥔',p:'1553979459-d1a5c027c44c',a:'Chips · Crisps · بطاطس مقرمشة'},
-  'دجاج':             {e:'🍗',p:'1604503468506-a8da13d11560',a:'Chicken · Poultry · فروج · فرخة'},
-  'بيض':              {e:'🥚',p:'1518569656558-1f25e69d2491',a:'Eggs · بيض دجاج · Oeufs'},
-  'خبز أبيض':         {e:'🍞',p:'1509440159596-0249088772ff',a:'White Bread · عيش · فينو · شمس · فرانزيلة'},
-  'مكرونة':           {e:'🍝',p:'1551183053-bf91798d9b7c',a:'Pasta · Noodles · شعيرية · فرموز · مكرونة'},
-  'حليب':             {e:'🥛',p:'1563636619-e9143da7973b',a:'Milk · Dairy · لبن · Lait'},
-  'جبنة بيضاء':       {e:'🧀',p:'1631379578550-4b80f4e019f2',a:'White Cheese · قريش · ريكوتا · كريمي'},
-  'زبادي':            {e:'🥣',p:'1488477181895-a70e969d85a8',a:'Yogurt · لبن · Yaourt · يوغرت'},
-  'طماطم':            {e:'🍅',p:'1546094096-0df4bcaaa337',a:'Tomatoes · بندورة · طماطم حمراء'},
-  'خيار':             {e:'🥒',p:'1568718119316-b6b6d58b04e8',a:'Cucumber · خيار · Concombre'},
-  'سبانخ':            {e:'🥬',p:'1576045057-5a04cee0ef70',a:'Spinach · سبانخ · Épinards'},
-  'ملوخية':           {e:'🥬',p:'1576045057-5a04cee0ef70',a:'Molokhia · Jews Mallow · ملوخية'},
-  'عدس':              {e:'🫘',p:'1515543904379-3d757afe72e4',a:'Lentils · عدس · Lentilles'},
-  'فول':              {e:'🫘',p:'1566385101743-605db2b7c32a',a:'Fava Beans · فول مدمس · Broad Beans'},
-  'حمص':              {e:'🫘',p:'1512621776951-a57141f2eefd',a:'Chickpeas · حمص · Pois Chiches'},
-  'كولا':             {e:'🥤',p:'1554866585-cd94860890b7',a:'Cola · Soda · Pepsi · Coke · غازيات'},
-  'بطيخ':             {e:'🍉',p:'1587049352851-8d4e89133924',a:'Watermelon · جيخة · حبحب'},
-  'شاي أحمر':         {e:'☕',p:'1576092768241-dec231879fc3',a:'Black Tea · Red Tea · شاي أسود'},
+  'أرز':              {e:'🍚',a:'Rice · رز · Riz'},
+  'بطاطس':            {e:'🥔',a:'Potatoes · بطاطا · Patates'},
+  'تمر':              {e:'🌴',a:'Dates · رطب · خرما'},
+  'زبدة':             {e:'🧈',a:'Butter · لورباك · زبدة بلدي'},
+  'سكر':              {e:'🍬',a:'Sugar · سكر أبيض'},
+  'عسل':              {e:'🍯',a:'Honey · عسل نحل طبيعي'},
+  'سمن':              {e:'🧈',a:'Ghee · سمن عربي · Clarified Butter'},
+  'عسل أسود':         {e:'🍯',a:'Molasses · Blackstrap · دبس'},
+  'لحم خروف':         {e:'🥩',a:'Lamb · Mutton · ضاني · خروف'},
+  'لحم بقري':         {e:'🥩',a:'Beef · بقر · بتلو · كندوز'},
+  'لحم جمل':          {e:'🥩',a:'Camel Meat · إبل · ناقة'},
+  'لحم مفروم':        {e:'🥩',a:'Ground Beef · لحمة مفرومة'},
+  'كبدة':             {e:'🫀',a:'Liver · كبد · Kabd'},
+  'أرنب':             {e:'🐇',a:'Rabbit · Bunny · أرانب'},
+  'كوارع':            {e:'🦴',a:'Trotters · قوائم · كراعين'},
+  'حمام':             {e:'🕊️',a:'Pigeon · Squab · يمام'},
+  'سمان':             {e:'🐦',a:'Quail · سلوى · طير صغير'},
+  'سردين':            {e:'🐟',a:'Sardines · سمك سردين'},
+  'سمك بحر':          {e:'🐠',a:'Sea Fish · سمك بحري'},
+  'جبن جودة':         {e:'🧀',a:'Gouda Cheese · جودة هولندية'},
+  'جبن شيدر':         {e:'🧀',a:'Cheddar Cheese · شيدر'},
+  'جبن إمنتال':       {e:'🧀',a:'Emmental · Swiss Cheese · جبن سويسري'},
+  'جبن كاشكوال':      {e:'🧀',a:'Kashkaval · كاشكفال · ريكفورد'},
+  'جبن فلمنك':        {e:'🧀',a:'Edam Cheese · EDAM · فلمنكية'},
+  'مثلثات':           {e:'🔺',a:'Processed Cheese Triangles'},
+  'توست':             {e:'🍞',a:'Whole Grain Toast · توست النخالة · خبز أسمر'},
+  'عنب':              {e:'🍇',a:'Grapes · Raisins · عنب أسود'},
+  'رمان':             {e:'🍎',a:'Pomegranate · حب الرمان'},
+  'موز':              {e:'🍌',a:'Banana · موزة'},
+  'فراولة':           {e:'🍓',a:'Strawberry · Strawberries · فريز'},
+  'تفاح':             {e:'🍎',a:'Apple · تفاحة'},
+  'كريز':             {e:'🍒',a:'Cherries · كرز · Cherry'},
+  'توت':              {e:'🫐',a:'Berries · Mulberry · توت شامي · Blueberries'},
+  'مشمش':             {e:'🍑',a:'Apricot · Apricots · بخارة'},
+  'خوخ':              {e:'🍑',a:'Peach · دراق · Nectarine'},
+  'كمثرى':            {e:'🍐',a:'Pear · إجاص · إنجاص · Poire'},
+  'تين':              {e:'🌿',a:'Fig · تين أسود · Figue'},
+  'شوكولاتة داكنة':   {e:'🍫',a:'Dark Chocolate 70%+ · شوكولا داكن'},
+  'نوتيلا':           {e:'🫙',a:'Nutella · كريمة الشوكولاتة والبندق'},
+  'حلاوة طحينية':     {e:'🍮',a:'Halva · Halawa · حلاوة · Tahini Candy'},
+  'بسبوسة':           {e:'🍰',a:'Basbousa · سميت · هريسة · Semolina Cake'},
+  'مربى':             {e:'🫙',a:'Jam · Marmalade · مرملاد · Confiture'},
+  'فولية':            {e:'🍬',a:'Peanut Brittle · فولية · حلاوة الفول'},
+  'سمسمية':           {e:'🍬',a:'Sesame Candy · سمسمية · حلاوة السمسم'},
+  'لوز':              {e:'🌰',a:'Almonds · لوز حلو'},
+  'كاجو':             {e:'🥜',a:'Cashews · Cashew Nuts · كاجو'},
+  'عين جمل':          {e:'🪨',a:'Walnuts · جوز · عين الجمل · Noix'},
+  'فستق':             {e:'🌿',a:'Pistachios · فستق حلبي · Pistache'},
+  'صنوبر':            {e:'🌲',a:'Pine Nuts · حب الصنوبر · Pignons'},
+  'فول سوداني':       {e:'🥜',a:'Peanuts · فول سوداني · Groundnuts'},
+  'شاي أخضر':         {e:'🍵',a:'Green Tea · شاي أخضر'},
+  'قهوة':             {e:'☕',a:'Coffee · Turkish Coffee · قهوة تركي'},
+  'زعتر':             {e:'🌿',a:'Thyme · Zaatar · زعتر'},
+  'ذرة':              {e:'🌽',a:'Corn · Maize · ذرة شامية'},
+  'زيت زيتون':        {e:'🫒',a:'Olive Oil · زيت الزيتون البكر · Huile d Olive'},
+  'زيتون':            {e:'🫒',a:'Olives · زيتون كالاماتا'},
+  'شيبسي':            {e:'🥔',a:'Chips · Crisps · بطاطس مقرمشة'},
+  'دجاج':             {e:'🍗',a:'Chicken · Poultry · فروج · فرخة'},
+  'بيض':              {e:'🥚',a:'Eggs · بيض دجاج · Oeufs'},
+  'خبز أبيض':         {e:'🍞',a:'White Bread · عيش · فينو · شمس · فرانزيلة'},
+  'مكرونة':           {e:'🍝',a:'Pasta · Noodles · شعيرية · فرموز · مكرونة'},
+  'حليب':             {e:'🥛',a:'Milk · Dairy · لبن · Lait'},
+  'جبنة بيضاء':       {e:'🧀',a:'White Cheese · قريش · ريكوتا · كريمي'},
+  'زبادي':            {e:'🥣',a:'Yogurt · لبن · Yaourt · يوغرت'},
+  'طماطم':            {e:'🍅',a:'Tomatoes · بندورة · طماطم حمراء'},
+  'خيار':             {e:'🥒',a:'Cucumber · خيار · Concombre'},
+  'سبانخ':            {e:'🥬',a:'Spinach · سبانخ · Épinards'},
+  'ملوخية':           {e:'🥬',a:'Molokhia · Jews Mallow · ملوخية'},
+  'عدس':              {e:'🫘',a:'Lentils · عدس · Lentilles'},
+  'فول':              {e:'🫘',a:'Fava Beans · فول مدمس · Broad Beans'},
+  'حمص':              {e:'🫘',a:'Chickpeas · حمص · Pois Chiches'},
+  'كولا':             {e:'🥤',a:'Cola · Soda · Pepsi · Coke · غازيات'},
+  'بطيخ':             {e:'🍉',a:'Watermelon · جيخة · حبحب'},
+  'شاي أحمر':         {e:'☕',a:'Black Tea · Red Tea · شاي أسود'},
 };
 
 const allowedCats=[
@@ -573,8 +585,9 @@ function dayCalc(meals){
 function ingHtml(items){
   return items.map(i=>{
     const f=IMGS[i.n];
-    const img=f?`<img class="ii" src="${U+f.p+SQ}" onerror="this.style.display='none';this.nextSibling.style.display='inline-block'" alt="${i.n}"><span class="ie" style="display:none">${f.e||'🍽️'}</span>`
-              :`<span class="ie">🍽️</span>`;
+    const src=imgSrc(i.n,true);
+    const img=src?`<img class="ii" src="${src}" loading="lazy" decoding="async" width="22" height="22" onerror="this.style.display='none';this.nextSibling.style.display='inline-block'" alt="${i.n}"><span class="ie" style="display:none">${(f&&f.e)||'🍽️'}</span>`
+              :`<span class="ie">${(f&&f.e)||'🍽️'}</span>`;
     return `<span class="ing">${img}<span class="in">${i.n}</span><span class="ig">${i.u}</span></span>`;
   }).join('');
 }
@@ -592,8 +605,8 @@ function goTab(t){
 // ── food grid ────────────────────────────────────────────
 function fc(name,cls){
   const f=IMGS[name]||{e:'🍽️',a:''};
-  const src=f.p?U+f.p+Q:'';
-  const imgHtml=src?`<img src="${src}" onerror="this.style.display='none';this.nextSibling.style.display='flex'" alt="${name}"><div class="em" style="display:none">${f.e}</div>`:`<div class="em">${f.e}</div>`;
+  const src=imgSrc(name,false);
+  const imgHtml=src?`<img src="${src}" loading="lazy" decoding="async" width="110" height="88" onerror="this.style.display='none';this.nextSibling.style.display='flex'" alt="${name}"><div class="em" style="display:none">${f.e}</div>`:`<div class="em">${f.e}</div>`;
   const badX=cls==='bad'?'<span class="bad-x">✗</span>':'';
   const starB=cls==='star-item'?'<span class="star-b">⭐ أساسي</span>':'';
   return `<div class="fc${cls?' '+cls:''}">`+
