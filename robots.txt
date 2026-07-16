@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://khaledalarda.github.io/alarda/sitemap.xml
+Sitemap: https://tayebat.org/sitemap.xml
