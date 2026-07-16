@@ -104,7 +104,7 @@ h1{font-size:22px;font-weight:700;margin-bottom:4px}
 .disc{font-size:11px;color:#bbb;margin-top:1.25rem;text-align:center;line-height:1.6}
 .hidden{display:none}
 .tab:focus-visible,.wbtn:focus-visible,.dbtn:focus-visible,.altbtn:focus-visible{outline:2px solid #1d4ed8;outline-offset:2px}
-.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+h3.cat-lbl{margin-top:0}
 </style>
 <script type="application/ld+json">
 {
@@ -149,11 +149,11 @@ h1{font-size:22px;font-weight:700;margin-bottom:4px}
 <h1>🌿 دليل نظام الطيبات الشامل</h1>
 <p class="sub">دليل غذائي كامل بالصور — لكل وجبة سعراتها الحرارية والبروتين والدهون، وخطط للحياة العادية والجيم.</p>
 </header>
-<nav class="tabs" role="tablist" aria-label="أقسام الدليل">
-  <button class="tab on" role="tab" aria-selected="true" onclick="goTab(0)">📸 الأكل بالصور</button>
-  <button class="tab" role="tab" aria-selected="false" onclick="goTab(1)">🏠 حياة عادية + سعرات</button>
-  <button class="tab" role="tab" aria-selected="false" onclick="goTab(2)">🏋️ جيم + سعرات</button>
-  <button class="tab" role="tab" aria-selected="false" onclick="goTab(3)">🧠 مدرب الحياة</button>
+<nav class="tabs" aria-label="أقسام الدليل">
+  <button class="tab on" aria-pressed="true" onclick="goTab(0)">📸 الأكل بالصور</button>
+  <button class="tab" aria-pressed="false" onclick="goTab(1)">🏠 حياة عادية + سعرات</button>
+  <button class="tab" aria-pressed="false" onclick="goTab(2)">🏋️ جيم + سعرات</button>
+  <button class="tab" aria-pressed="false" onclick="goTab(3)">🧠 مدرب الحياة</button>
 </nav>
 <div id="t0">
   <h2 class="sec-title">القواعد الست الذهبية</h2>
@@ -182,15 +182,15 @@ h1{font-size:22px;font-weight:700;margin-bottom:4px}
 <script>
 const SLUG={
   'أرز':'rice','بطاطس':'potato','تمر':'dates','زبدة':'butter','سكر':'sugar','عسل':'honey','سمن':'ghee','عسل أسود':'molasses',
-  'لحم خروف':'lamb','لحم بقري':'beef','لحم جمل':'camel-meat','لحم مفروم':'ground-beef','كبدة':'liver','أرنب':'rabbit','كوارع':'trotters','حمام':'pigeon','سمان':'quail','سردين':'sardines','سمك بحر':'sea-fish',
-  'جبن جودة':'gouda','جبن شيدر':'cheddar','جبن إمنتال':'emmental','جبن كاشكوال':'kashkaval','جبن فلمنك':'edam','مثلثات':'cheese-triangles','توست':'toast','جبنة بيضاء':'white-cheese','زبادي':'yogurt','حليب':'milk',
+  'لحم خروف':'lamb','لحم بقري':'beef','لحم جمل':'camel-meat','لحم مفروم':'ground-beef','كبدة':'liver','أرنب':'rabbit','حمام':'pigeon','سمان':'quail','سردين':'sardines','سمك بحر':'sea-fish',
+  'جبن جودة':'gouda','جبن شيدر':'cheddar','جبن كاشكوال':'kashkaval','جبن فلمنك':'edam','مثلثات':'cheese-triangles','توست':'toast','جبنة بيضاء':'white-cheese','زبادي':'yogurt','حليب':'milk',
   'عنب':'grapes','رمان':'pomegranate','موز':'banana','فراولة':'strawberry','تفاح':'apple','كريز':'cherries','توت':'berries','مشمش':'apricot','خوخ':'peach','كمثرى':'pear','تين':'fig','بطيخ':'watermelon',
-  'شوكولاتة داكنة':'dark-chocolate','نوتيلا':'nutella','حلاوة طحينية':'halva','بسبوسة':'basbousa','مربى':'jam','فولية':'peanut-brittle','سمسمية':'sesame-candy',
+  'شوكولاتة داكنة':'dark-chocolate','نوتيلا':'nutella','حلاوة طحينية':'halva','بسبوسة':'basbousa','مربى':'jam','فولية':'peanut-brittle',
   'لوز':'almonds','كاجو':'cashews','عين جمل':'walnuts','فستق':'pistachios','صنوبر':'pine-nuts','فول سوداني':'peanuts',
   'شاي أخضر':'green-tea','قهوة':'coffee','زعتر':'zaatar','شاي أحمر':'black-tea','كولا':'cola',
   'ذرة':'corn','زيت زيتون':'olive-oil','زيتون':'olives','شيبسي':'chips',
   'دجاج':'chicken','بيض':'eggs','خبز أبيض':'white-bread','مكرونة':'pasta',
-  'طماطم':'tomatoes','خيار':'cucumber','سبانخ':'spinach','ملوخية':'molokhia','عدس':'lentils','فول':'fava-beans','حمص':'chickpeas'
+  'طماطم':'tomatoes','خيار':'cucumber','سبانخ':'spinach','عدس':'lentils','فول':'fava-beans','حمص':'chickpeas'
 };
 function imgSrc(name,small){const s=SLUG[name];return s?'images/'+s+(small?'-sm':'')+'.webp':'';}
 
@@ -596,7 +596,7 @@ function ingHtml(items){
 let curTab=0,curWeek=[0,0],curDay=[0,0],altState={};
 function goTab(t){
   curTab=t;
-  document.querySelectorAll('.tab').forEach((b,i)=>{b.classList.toggle('on',i===t);b.setAttribute('aria-selected',i===t);});
+  document.querySelectorAll('.tab').forEach((b,i)=>{b.classList.toggle('on',i===t);b.setAttribute('aria-pressed',i===t);});
   [0,1,2,3].forEach(i=>document.getElementById('t'+i).classList.toggle('hidden',i!==t));
   altState={};
   if(t===1||t===2)renderPlan(t);
