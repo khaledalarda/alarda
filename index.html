@@ -103,6 +103,8 @@ h1{font-size:22px;font-weight:700;margin-bottom:4px}
 .goal{background:#fff;border:1px solid #86efac;border-radius:8px;padding:8px 12px;text-align:center;font-size:13px}
 .disc{font-size:11px;color:#bbb;margin-top:1.25rem;text-align:center;line-height:1.6}
 .hidden{display:none}
+.tab:focus-visible,.wbtn:focus-visible,.dbtn:focus-visible,.altbtn:focus-visible{outline:2px solid #1d4ed8;outline-offset:2px}
+.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
 </style>
 <script type="application/ld+json">
 {
@@ -142,17 +144,19 @@ h1{font-size:22px;font-weight:700;margin-bottom:4px}
 </script>
 </head>
 <body>
-<div class="wrap">
+<main class="wrap">
+<header>
 <h1>🌿 دليل نظام الطيبات الشامل</h1>
-<p class="sub">مخصص لك — ٨٦ كجم · ١٧٤ سم · نشاط منخفض — السعرات والبروتين محسوبة لكل وجبة</p>
-<div class="tabs">
-  <button class="tab on" onclick="goTab(0)">📸 الأكل بالصور</button>
-  <button class="tab" onclick="goTab(1)">🏠 حياة عادية + سعرات</button>
-  <button class="tab" onclick="goTab(2)">🏋️ جيم + سعرات</button>
-  <button class="tab" onclick="goTab(3)">🧠 مدرب الحياة</button>
-</div>
+<p class="sub">دليل غذائي كامل بالصور — لكل وجبة سعراتها الحرارية والبروتين والدهون، وخطط للحياة العادية والجيم.</p>
+</header>
+<nav class="tabs" role="tablist" aria-label="أقسام الدليل">
+  <button class="tab on" role="tab" aria-selected="true" onclick="goTab(0)">📸 الأكل بالصور</button>
+  <button class="tab" role="tab" aria-selected="false" onclick="goTab(1)">🏠 حياة عادية + سعرات</button>
+  <button class="tab" role="tab" aria-selected="false" onclick="goTab(2)">🏋️ جيم + سعرات</button>
+  <button class="tab" role="tab" aria-selected="false" onclick="goTab(3)">🧠 مدرب الحياة</button>
+</nav>
 <div id="t0">
-  <p class="sec-title">القواعد الست الذهبية</p>
+  <h2 class="sec-title">القواعد الست الذهبية</h2>
   <div class="rules">
     <div class="rule"><div class="rt">⏰ كُل عند الجوع الحقيقي</div><div class="rd">مش لأنك ملول — جوع حقيقي بس</div></div>
     <div class="rule"><div class="rt">✋ قف عند ٨٠٪ شبع</div><div class="rd">قبل الشبع الكامل — الجهاز الهضمي يشتغل بكفاءة</div></div>
@@ -161,20 +165,20 @@ h1{font-size:22px;font-weight:700;margin-bottom:4px}
     <div class="rule"><div class="rt">🌙 الصيام أساسي</div><div class="rd">الإثنين والخميس + أيام البيض ١٣،١٤،١٥</div></div>
     <div class="rule"><div class="rt">🔄 البروتين: يوم آه ويوم لا</div><div class="rd">يوم لحم/سمك، يوم راحة</div></div>
   </div>
-  <p class="sec-title">✅ المسموحات بالصور — الاسم بالعربي والإنجليزي</p>
+  <h2 class="sec-title">✅ المسموحات بالصور — الاسم بالعربي والإنجليزي</h2>
   <div id="ag"></div>
-  <p class="sec-title" style="margin-top:1.5rem">❌ الممنوعات بالصور</p>
+  <h2 class="sec-title" style="margin-top:1.5rem">❌ الممنوعات بالصور</h2>
   <div id="fg"></div>
 </div>
 <div id="t1" class="hidden"><div class="row-btns" id="wb1"></div><div class="wnote" id="wn1"></div><div class="row-btns" id="db1"></div><div id="dc1"></div></div>
 <div id="t2" class="hidden"><div class="row-btns" id="wb2"></div><div class="wnote" id="wn2"></div><div class="ginfo">⭐ وجبة بعد التدريب هي الأهم — لحم + أرز في أول ٤٥ دقيقة بعد التمرين</div><div class="row-btns" id="db2"></div><div id="dc2"></div></div>
 <div id="t3" class="hidden">
-  <div class="cwarn"><div class="cwt">كلام صريح معك</div><div class="cwd">٨٦ كجم + حياة ساكنة + نوم مكسّر — الأكل ٣٠٪ فقط من المعادلة. الباقي: نوم + شمس + حركة.</div></div>
+  <div class="cwarn"><div class="cwt">كلام صريح</div><div class="cwd">الأكل ٣٠٪ فقط من المعادلة. الباقي: نوم + شمس + حركة. النتائج الحقيقية تأتي من نمط حياة متكامل، لا من الطعام وحده.</div></div>
   <div id="co"></div>
   <div class="gbox"><div class="gtitle">🏆 أهدافك بعد ٣٠ يوم</div><div class="ggrid"><div class="goal">✅ نزول ٣-٥ كجم</div><div class="goal">✅ نوم أفضل</div><div class="goal">✅ مزاج أهدأ</div><div class="goal">✅ طاقة صباحية</div><div class="goal">✅ بشرة أوضح</div><div class="goal">✅ توازن هرموني أفضل</div></div></div>
   <p class="disc">للأغراض التعليمية فقط — استشر طبيبك قبل أي تغييرات كبيرة.</p>
 </div>
-</div>
+</main>
 <script>
 const U='https://images.unsplash.com/photo-',Q='?w=220&h=220&fit=crop&crop=center&q=80',SQ='?w=60&h=60&fit=crop&crop=center&q=80';
 
@@ -579,7 +583,7 @@ function ingHtml(items){
 let curTab=0,curWeek=[0,0],curDay=[0,0],altState={};
 function goTab(t){
   curTab=t;
-  document.querySelectorAll('.tab').forEach((b,i)=>b.classList.toggle('on',i===t));
+  document.querySelectorAll('.tab').forEach((b,i)=>{b.classList.toggle('on',i===t);b.setAttribute('aria-selected',i===t);});
   [0,1,2,3].forEach(i=>document.getElementById('t'+i).classList.toggle('hidden',i!==t));
   altState={};
   if(t===1||t===2)renderPlan(t);
@@ -601,7 +605,7 @@ function fc(name,cls){
 function renderAllowed(){
   let h='';
   allowedCats.forEach(c=>{
-    h+=`<div style="margin-bottom:1.25rem"><div class="cat-lbl">${c.l}</div><div class="food-grid">`;
+    h+=`<div style="margin-bottom:1.25rem"><h3 class="cat-lbl">${c.l}</h3><div class="food-grid">`;
     c.items.forEach(n=>h+=fc(n,c.star?'star-item':''));
     h+=`</div></div>`;
   });
@@ -610,7 +614,7 @@ function renderAllowed(){
 function renderForbidden(){
   let h='';
   forbiddenCats.forEach(c=>{
-    h+=`<div style="margin-bottom:1.25rem"><div class="cat-lbl" style="background:#fff5f5;color:#dc2626">${c.l}</div><div class="food-grid">`;
+    h+=`<div style="margin-bottom:1.25rem"><h3 class="cat-lbl" style="background:#fff5f5;color:#dc2626">${c.l}</h3><div class="food-grid">`;
     c.items.forEach(n=>h+=fc(n,'bad'));
     h+=`</div></div>`;
   });
