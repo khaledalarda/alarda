@@ -427,8 +427,23 @@ dialog.about::backdrop{background:rgba(20,17,12,.45);backdrop-filter:blur(3px)}
   </div>
 </dialog>
 
+<script type="module">
+/* ════ ANALYTICS (Statsig — cookieless, autocapture + session replay) ════ */
+import { StatsigClient } from 'https://cdn.jsdelivr.net/npm/@statsig/js-client@3/+esm';
+import { runStatsigSessionReplay } from 'https://cdn.jsdelivr.net/npm/@statsig/session-replay@3/+esm';
+import { runStatsigAutoCapture } from 'https://cdn.jsdelivr.net/npm/@statsig/web-analytics@3/+esm';
+const STATSIG_CLIENT_KEY='client-YdF7pDcyde3Vav3J1GsvdOzsoMRvn9CqJ7oHFzh6UV7'; /* Statsig client key (public by design) */
+try{
+  const client=new StatsigClient(STATSIG_CLIENT_KEY,{},{environment:{tier:'production'}});
+  runStatsigSessionReplay(client);
+  runStatsigAutoCapture(client);
+  await client.initializeAsync();
+  window.__statsig=client;
+}catch(e){}
+</script>
 <script>
 'use strict';
+function track(event,value,meta){try{if(window.__statsig)window.__statsig.logEvent(event,value==null?undefined:value,meta)}catch(e){}}
 /* ════ DATA (source of truth from the original guide) ════ */
 const SLUG={'أرز':'rice','بطاطس':'potato','تمر':'dates','زبدة':'butter','سكر':'sugar','عسل':'honey','سمن':'ghee','عسل أسود':'molasses','لحم خروف':'lamb','لحم بقري':'beef','لحم جمل':'camel-meat','لحم مفروم':'ground-beef','كبدة':'liver','أرنب':'rabbit','حمام':'pigeon','سمان':'quail','سردين':'sardines','سمك بحر':'sea-fish','جبن جودة':'gouda','جبن شيدر':'cheddar','جبن كاشكوال':'kashkaval','جبن فلمنك':'edam','مثلثات':'cheese-triangles','توست':'toast','جبنة بيضاء':'white-cheese','زبادي':'yogurt','حليب':'milk','عنب':'grapes','رمان':'pomegranate','موز':'banana','فراولة':'strawberry','تفاح':'apple','كريز':'cherries','توت':'berries','مشمش':'apricot','خوخ':'peach','كمثرى':'pear','تين':'fig','بطيخ':'watermelon','شوكولاتة داكنة':'dark-chocolate','نوتيلا':'nutella','حلاوة طحينية':'halva','بسبوسة':'basbousa','مربى':'jam','فولية':'peanut-brittle','لوز':'almonds','كاجو':'cashews','عين جمل':'walnuts','فستق':'pistachios','صنوبر':'pine-nuts','فول سوداني':'peanuts','شاي أخضر':'green-tea','قهوة':'coffee','زعتر':'zaatar','شاي أحمر':'black-tea','كولا':'cola','ذرة':'corn','زيت زيتون':'olive-oil','زيتون':'olives','شيبسي':'chips','دجاج':'chicken','بيض':'eggs','خبز أبيض':'white-bread','مكرونة':'pasta','طماطم':'tomatoes','خيار':'cucumber','سبانخ':'spinach','عدس':'lentils','فول':'fava-beans','حمص':'chickpeas'};
 const imgSrc=(n,sm)=>{const s=SLUG[n];return s?'images/'+s+(sm?'-sm':'')+'.webp':''};
@@ -593,7 +608,7 @@ mq.addEventListener('change',()=>{if(S.ui.theme==='auto')applyTheme()});
 $('#themeBtn').addEventListener('click',()=>{
   const order=['auto','light','dark'];
   S.ui.theme=order[(order.indexOf(S.ui.theme)+1)%3];
-  save();applyTheme();toast('المظهر: '+THEME_L[S.ui.theme]);
+  save();applyTheme();track('theme_toggled',S.ui.theme);toast('المظهر: '+THEME_L[S.ui.theme]);
   if($('#v-settings').innerHTML)renderSettings()});
 
 /* ════ STREAK ════ */
@@ -696,19 +711,19 @@ function renderPlan(){
   bindDayEvents('#v-plan',renderPlan)}
 
 function bindDayEvents(root,rerender){
-  document.querySelectorAll(root+' [data-plan]').forEach(b=>b.addEventListener('click',()=>{S.ui.plan=b.dataset.plan;S.ui.day=Math.min(S.ui.day,6);save();renderToday();renderPlan()}));
+  document.querySelectorAll(root+' [data-plan]').forEach(b=>b.addEventListener('click',()=>{S.ui.plan=b.dataset.plan;S.ui.day=Math.min(S.ui.day,6);save();track('plan_switched',b.dataset.plan);renderToday();renderPlan()}));
   document.querySelectorAll(root+' [data-day]').forEach(b=>b.addEventListener('click',()=>{S.ui.day=+b.dataset.day;save();renderToday();renderPlan()}));
   document.querySelectorAll(root+' [data-week]').forEach(b=>b.addEventListener('click',()=>{S.ui.week=+b.dataset.week;save();renderPlan()}));
-  document.querySelectorAll(root+' [data-alt]').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.alt;S.alt[k]=!S.alt[k];save();renderToday();renderPlan()}));
+  document.querySelectorAll(root+' [data-alt]').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.alt;S.alt[k]=!S.alt[k];save();track('meal_alt_toggled',k,{on:String(S.alt[k])});renderToday();renderPlan()}));
   document.querySelectorAll(root+' [data-goto]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();go(a.dataset.goto)}));
   const db=document.querySelector(root+' #doneBtn');
   if(db)db.addEventListener('click',()=>{const t=localISO();
     S.done=S.done.includes(t)?S.done.filter(d=>d!==t):[...S.done,t];
     save();renderStreak();renderToday();
-    if(S.done.includes(t))toast('عاش! 🔥 يوم '+streak()+' على التوالي')})}
+    if(S.done.includes(t)){track('day_completed',streak());toast('عاش! 🔥 يوم '+streak()+' على التوالي')}})}
 
 /* ════ VIEW: FOODS ════ */
-let foodQ='',foodF='all';
+let foodQ='',foodF='all',foodSearchT;
 function foodCard(n,cls){
   const meta=IMGS[n]||{e:'🍽️',a:''};const src=imgSrc(n,false);
   const nutr=NUTR[n]||NUTR[n.replace('أ','ا')]||null;
@@ -740,6 +755,7 @@ function renderFoods(){
   $('#v-foods').innerHTML=h;
   const inp=$('#foodSearch');
   inp.addEventListener('input',()=>{foodQ=inp.value;
+    clearTimeout(foodSearchT);foodSearchT=setTimeout(()=>{if(foodQ.trim().length>=2)track('food_searched',foodQ.trim())},900);
     const pos=inp.selectionStart;renderFoods();
     const ni=$('#foodSearch');ni.focus();ni.setSelectionRange(pos,pos)});
   document.querySelectorAll('#v-foods [data-ff]').forEach(b=>b.addEventListener('click',()=>{foodF=b.dataset.ff;renderFoods()}))}
@@ -803,13 +819,13 @@ function renderSettings(){
     const lim={w:[35,250],h:[120,230],age:[14,90]}[k];
     S.cfg[k]=Math.min(lim[1],Math.max(lim[0],S.cfg[k]+ +d));upd()}));
   document.querySelectorAll('#v-settings [data-sex]').forEach(b=>b.addEventListener('click',()=>{S.cfg.sex=b.dataset.sex;upd()}));
-  document.querySelectorAll('#v-settings [data-goal]').forEach(b=>b.addEventListener('click',()=>{S.cfg.goal=b.dataset.goal;upd()}));
-  document.querySelectorAll('#v-settings [data-theme]').forEach(b=>b.addEventListener('click',()=>{S.ui.theme=b.dataset.theme;save();applyTheme();renderSettings()}));
-  $('#inAct').addEventListener('change',e=>{S.cfg.act=e.target.value;upd()})}
+  document.querySelectorAll('#v-settings [data-goal]').forEach(b=>b.addEventListener('click',()=>{S.cfg.goal=b.dataset.goal;track('calorie_config_changed','goal',{goal:b.dataset.goal,act:S.cfg.act});upd()}));
+  document.querySelectorAll('#v-settings [data-theme]').forEach(b=>b.addEventListener('click',()=>{S.ui.theme=b.dataset.theme;save();applyTheme();track('theme_toggled',S.ui.theme);renderSettings()}));
+  $('#inAct').addEventListener('change',e=>{S.cfg.act=e.target.value;track('calorie_config_changed','activity',{act:e.target.value,goal:S.cfg.goal});upd()})}
 
 /* ════ NAV / SHARE / TOAST ════ */
 const VIEWS=['today','plan','foods','coach','settings'];
-function go(v){S.ui.view=v;save();
+function go(v){S.ui.view=v;save();track('view_changed',v);
   VIEWS.forEach(x=>$('#v-'+x).classList.toggle('hidden',x!==v));
   document.querySelectorAll('.nbtn').forEach(b=>{
     if(b.dataset.view===v)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});
@@ -822,15 +838,16 @@ function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show'
 
 const SHARE_TXT='نظام الطيبات 🌿 — خطة غذائية يومية بالصور والسعرات، محسوبة على وزنك وهدفك';
 const SHARE_URL='https://tayebat.org/';
-$('#waBtn').addEventListener('click',()=>{
+$('#waBtn').addEventListener('click',()=>{track('share_clicked','whatsapp');
   window.open('https://wa.me/?text='+encodeURIComponent(SHARE_TXT+'\n'+SHARE_URL),'_blank','noopener')});
 $('#shareBtn2').addEventListener('click',async()=>{
+  track('share_clicked',navigator.share?'native':'copy');
   if(navigator.share){try{await navigator.share({title:'نظام الطيبات',text:SHARE_TXT,url:SHARE_URL})}catch(e){}}
   else{try{await navigator.clipboard.writeText(SHARE_URL);toast('انسخ الرابط ✓')}catch(e){}}});
 
 /* ════ ABOUT DIALOG ════ */
 const aboutDlg=$('#aboutDlg');
-$('#aboutBtn').addEventListener('click',()=>aboutDlg.showModal());
+$('#aboutBtn').addEventListener('click',()=>{track('about_opened');aboutDlg.showModal()});
 $('#aboutClose').addEventListener('click',()=>aboutDlg.close());
 $('#aboutGo').addEventListener('click',()=>{aboutDlg.close();go('today')});
 aboutDlg.addEventListener('click',e=>{if(e.target===aboutDlg)aboutDlg.close()});
