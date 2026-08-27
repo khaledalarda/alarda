@@ -34,6 +34,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="نظام الطيبات">
 
+<!-- Google Preferred Sources button — developers.google.com/search/docs/appearance/preferred-sources -->
+<script async src="https://news.google.com/swg/js/v1/publisher.js"></script>
+
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":"WebSite","@id":"https://tayebat.org/#website","url":"https://tayebat.org/","name":"نظام الطيبات","inLanguage":"ar"},
@@ -276,6 +279,9 @@ h2.sec::after{content:"";flex:1;height:1px;background:var(--line)}
 footer{border-top:1px solid var(--line);margin-top:40px;padding:24px 0 8px;font-size:12.5px;color:var(--ink3);line-height:1.9}
 footer .disc{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:14px}
 footer .row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+footer .pref-src{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px 14px;margin-bottom:14px;padding:13px 16px;background:var(--card2);border:1px solid var(--line);border-radius:14px}
+footer .pref-src p{font-size:12.5px;color:var(--ink2);line-height:1.7;text-align:center}
+footer .pref-src [google-add-preferred-source-btn]{line-height:0}
 .toast{position:fixed;bottom:90px;right:50%;transform:translate(50%,20px);background:var(--ink);color:var(--bg);padding:10px 20px;border-radius:12px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:all .25s;z-index:60;box-shadow:var(--shadow-lg)}
 .toast.show{opacity:1;transform:translate(50%,0)}
 
@@ -399,6 +405,18 @@ dialog.about::backdrop{background:rgba(20,17,12,.45);backdrop-filter:blur(3px)}
 
   <footer>
     <div class="disc"><strong>تنبيه:</strong> هذا مشروع شخصي أُعدّ للاستخدام الخاص، والمحتوى المعروض لأغراض تعليمية وتثقيفية فقط وليس نصيحة طبية. صاحب الموقع غير مسؤول عن أي نتائج تترتب على اتباع هذا النظام — استشر طبيبك أو أخصائي تغذية قبل إجراء أي تغيير في نظامك الغذائي، خصوصاً إن كنت تعاني من حالة صحية.</div>
+    <div class="pref-src hidden" id="prefSrc">
+      <p>أضِف «نظام الطيبات» إلى مصادرك المفضّلة في جوجل — ليظهر لك أكثر في نتائج بحثك</p>
+      <div google-add-preferred-source-btn data-lang="ar"></div>
+    </div>
+    <script>
+    /* Match Google's button to the saved site theme before its library initializes. */
+    (function(){try{var t='auto';
+      try{var o=JSON.parse(localStorage.getItem('alarda:v2')||'{}');if(o.ui&&o.ui.theme)t=o.ui.theme}catch(e){}
+      var dark=t==='dark'||(t==='auto'&&matchMedia('(prefers-color-scheme: dark)').matches);
+      document.querySelector('#prefSrc [google-add-preferred-source-btn]').setAttribute('data-theme',dark?'dark':'light')}catch(e){}})();
+    </script>
+    <noscript><p style="margin-bottom:14px;text-align:center"><a href="https://www.google.com/preferences/source?q=tayebat.org" target="_blank" rel="noopener">أضِف tayebat.org إلى مصادرك المفضّلة في جوجل</a></p></noscript>
     <div class="row">
       <span>للتواصل مع صاحب الموقع: <a href="mailto:khalid.jamal.4002@gmail.com">khalid.jamal.4002@gmail.com</a></span>
       <span>·</span>
@@ -844,6 +862,17 @@ $('#shareBtn2').addEventListener('click',async()=>{
   track('share_clicked',navigator.share?'native':'copy');
   if(navigator.share){try{await navigator.share({title:'نظام الطيبات',text:SHARE_TXT,url:SHARE_URL})}catch(e){}}
   else{try{await navigator.clipboard.writeText(SHARE_URL);toast('انسخ الرابط ✓')}catch(e){}}});
+
+/* ════ GOOGLE PREFERRED SOURCES ════ */
+/* Google only renders the button when the domain is eligible — keep the block
+   hidden until its iframe actually lands, so no empty card is left behind. */
+(function(){const box=$('#prefSrc'),slot=box&&box.querySelector('[google-add-preferred-source-btn]');
+  if(!slot)return;
+  const show=()=>{box.classList.remove('hidden');track('preferred_source_shown')};
+  if(slot.childElementCount)return show();
+  const obs=new MutationObserver(()=>{if(slot.childElementCount){obs.disconnect();show()}});
+  obs.observe(slot,{childList:true});
+  setTimeout(()=>obs.disconnect(),20000)})();
 
 /* ════ ABOUT DIALOG ════ */
 const aboutDlg=$('#aboutDlg');
